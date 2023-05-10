@@ -1,0 +1,8 @@
+.parallax-bk{
+    background-image: url("https://weilernutrition.com/wp-content/uploads/food-allergy-adobe-stock-1024x576.jpg");
+    min-height: 650px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

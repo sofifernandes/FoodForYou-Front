@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-secondary">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+    aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Alterna navegação">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand ml-5 mr-4 " routerLink="/home" id="iconeNavBar" style="border-radius: 7px;"></a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <div *ngIf='auth.btnSair()'>
+        <li class="nav-item">
+          <a class="nav-link font-weight-bold text-uppercase mr-2" routerLink="/perfil">Perfil</a>
+        </li>
+      </div>
+      <div *ngIf='auth.btnSair()'>
+        <li class="nav-item">
+          <a class="nav-link font-weight-bold text-uppercase mr-2" routerLink="/feed">Feed</a>
+        </li>
+      </div>
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold text-uppercase mr-2" routerLink="/sobre">Sobre Nós</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold text-uppercase mr-2" routerLink="/informações">Mais Informações</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold text-uppercase mr-2" routerLink="/contato">Contato</a>
+      </li>
+    </ul>
+
+    <div *ngIf='auth.verificaAdmin()' >
+      <button class="btn btn-info border border-secondary my-2 my-sm-0 mr-3" type="submit" routerLink='/cadastro-tema'>Cadastrar tema</button>      
+    </div>  
+
+    <div *ngIf='auth.btnLogin()'>
+      <button class="btn btn-info border border-secondary my-2 my-sm-0 mr-3" type="submit" routerLink="/login">Entrar</button>
+    </div>
+
+    <div *ngIf='auth.btnLogin()'>
+      <button class="btn corBotao border border-secondary my-2 my-sm-0" style="color: #292b2c
+      ;" type="submit" routerLink="/cadastro">Cadastrar</button>
+    </div>
+
+    <div *ngIf='auth.btnSair()'>
+      <button class="btn btn-info my-2 my-sm-0 mr-3" type="submit" (click)='sair()'>Sair</button>
+    </div>
+  </div>
+</nav>

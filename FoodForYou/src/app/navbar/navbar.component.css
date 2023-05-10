@@ -1,0 +1,17 @@
+#iconeNavBar {
+    content: url("https://i.imgur.com/G2rX04v.png");
+    width: 60px;
+}
+
+a{
+    cursor: pointer;
+}
+
+.borderColor {
+    border-color: #428bca;
+}
+
+.corBotao:hover {
+    background-color: #17a2b8 !important;
+    color: white !important;
+}
