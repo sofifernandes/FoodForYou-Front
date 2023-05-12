@@ -3,6 +3,8 @@ export const environment = {
   idUser: 0,
   nomeUser: '',
   fotoUser: '',
+  categoria:'',
   token: '',
-  admin: false
+  admin: false,
+  clientId: '622687646351-2us02pog9j0tnjcflfmrd9fgj40808p5.apps.googleusercontent.com'
 };

@@ -22,7 +22,17 @@
           </div>
           <div class="text-center">
             <p>Ainda não é cadastrado? <a routerLink='/cadastro' style="color: #17a2b8">Cadastre-se aqui.</a></p>
-          </div>          
+          </div>
+          <div class="text-center">
+            <p>----------------- OU ------------------</p>
+          </div>
+          <div class="text-center mt-3 d-grid gap-2">
+            <button class="btn btn-outline-primary" (click)="entrar()">
+              <mat-icon>google</mat-icon>
+              Login com Google</button>
+            <button class="btn btn-outline-primary" (click)="entrar()">Login com Facebook</button>
+            <button class="btn btn-outline-primary" (click)="entrar()">Login com GitHub</button>
+          </div>           
         </div>
       </div>
     </div>
