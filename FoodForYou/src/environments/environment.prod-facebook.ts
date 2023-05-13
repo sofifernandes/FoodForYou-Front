@@ -3,7 +3,8 @@ export const environment = {
   idUser: 0,
   nomeUser: '',
   fotoUser: '',
-  email:'',
+  categoria:'',
   token: '',
-  admin: false
+  admin: false,
+  clientid: '611432174376415'
 };

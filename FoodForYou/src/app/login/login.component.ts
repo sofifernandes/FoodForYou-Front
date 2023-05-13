@@ -4,6 +4,7 @@ import { UserLogin } from '../model/UserLogin';
 import { AuthService } from '../service/auth.service';
 import { environment } from '../../environments/environment.prod';
 import { OAuthService, JwksValidationHandler } from 'angular-oauth2-oidc';
+import { User } from '../model/User';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ import { OAuthService, JwksValidationHandler } from 'angular-oauth2-oidc';
 export class LoginComponent implements OnInit {
 
   userLogin: UserLogin = new UserLogin();
+  user: User = new User();
   isOAuthLogin: boolean = false;
 
 
@@ -38,14 +40,15 @@ export class LoginComponent implements OnInit {
         environment.nomeUser = this.userLogin.nome;
         environment.fotoUser = this.userLogin.foto;
         environment.token = this.userLogin.token;
+        environment.email = this.userLogin.email;
         environment.admin = this.userLogin.admin;
 
         this.router.navigate(['/home']);
       });
     } else {
-      this.configureOAuthService('google');
-      this.configureOAuthService('facebook');
-      this.configureOAuthService('github');
+      this.configureOAuthService('google', environment['prod-google'].clientId);
+      this.configureOAuthService('facebook', environment['prod-facebook'].clientId );
+      this.configureOAuthService('github', environment['prod-github'].clientId);
       this.oauthService.tokenValidationHandler = new JwksValidationHandler();
       this.handleOAuthLogin('google');
     }
@@ -59,12 +62,12 @@ export class LoginComponent implements OnInit {
     this.isOAuthLogin = false;
   }
 
-  configureOAuthService(provider: string) {
+  configureOAuthService(provider: string, clientId: string) {
     let config: any;
 
     if (provider === 'google') {
       config = {
-        clientId: '622687646351-2us02pog9j0tnjcflfmrd9fgj40808p5.apps.googleusercontent.com',
+        clientId: clientId,
         issuer: 'https://accounts.google.com',
         redirectUri: 'http://localhost:4200/login/oauth2/code/google',
         scope: 'openid profile email',
@@ -81,7 +84,7 @@ export class LoginComponent implements OnInit {
 
     } else if (provider === 'facebook') {
       config = {
-        clientId: 'your-client-id',
+        clientId: clientId,
         issuer: 'https://www.facebook.com',
         redirectUri: window.location.origin + '/login',
         scope: 'email',
@@ -98,7 +101,7 @@ export class LoginComponent implements OnInit {
 
     } else if (provider === 'github') {
       config = {
-        clientId: 'your-client-id',
+        clientId: clientId,
         issuer: 'https://github.com',
         redirectUri: window.location.origin + '/login',
         scope: 'user:email',

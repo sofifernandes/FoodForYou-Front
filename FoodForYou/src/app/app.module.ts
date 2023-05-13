@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { OAuthModule, OAuthService } from 'angular-oauth2-oidc';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -56,14 +54,11 @@ import { PostTemaComponent } from './post-tema/post-tema.component';
     AppRoutingModule,    
     FontAwesomeModule,
     HttpClientModule,
-    MatButtonModule, 
-    MatIconModule,
     FormsModule,
     OrderModule,
     ModalModule.forRoot(),
     OAuthModule.forRoot()
   ],
-  exports: [MatButtonModule, MatIconModule],
   providers: [OAuthService],
   bootstrap: [AppComponent]
 })

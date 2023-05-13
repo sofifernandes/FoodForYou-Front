@@ -4,6 +4,7 @@ import { User } from '../model/User';
 import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service';
 import { UsuarioService } from '../service/usuario.service';
+import { UserLogin } from '../model/UserLogin';
 
 @Component({
   selector: 'app-cadastro',

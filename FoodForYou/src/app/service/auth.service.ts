@@ -10,17 +10,7 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient,
-    private oauthService: OAuthService) { 
-    this.oauthService.configure({
-      issuer: 'https://your-issuer.com',
-      clientId: environment.clientId,
-      redirectUri: window.location.origin + '/callback',
-      scope: 'openid profile email',
-      responseType: 'code',
-      showDebugInformation: true
-    });
-  }
+  constructor(private http: HttpClient) { }
   
 
   logar(userLogin: UserLogin) {
