@@ -36,13 +36,13 @@ export class DeleteComentarioComponent implements OnInit {
 
   btnSim() {
     this.comentarioService.deleteComentario(this.comentario.id).subscribe(() => {
-      this.router.navigate(['/perfil'])
+      this.router.navigate(['/feed'])
       this.alert.showAlertSuccess('Comentario apagado com sucesso!')
     })
   }
 
   btnNao() {
-    this.router.navigate(['/perfil'])
+    this.router.navigate(['/feed'])
   }
 
 }

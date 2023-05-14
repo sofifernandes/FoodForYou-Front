@@ -55,7 +55,7 @@ export class PostComentarioComponent implements OnInit {
     this.comentarioService.postComentario(this.comentario).subscribe((resp: Comentario) => {
       this.comentario = resp
       this.comentario = new Comentario()
-      this.alert.showAlertSuccess('Postagem realizada com sucesso!')
+      this.alert.showAlertSuccess('Comentário realizado com sucesso!')
       this.findAllComentarios()
     })
   }
@@ -63,8 +63,8 @@ export class PostComentarioComponent implements OnInit {
   cadastrar() {
     this.comentarioService.postComentario(this.comentario).subscribe((resp: Comentario) => {
       this.comentario = resp
-      this.router.navigate(['/perfil'])
-      this.alert.showAlertSuccess('Tema cadastrado com sucesso!')
+      this.router.navigate(['/feed'])
+      this.alert.showAlertSuccess('Comentário cadastrado com sucesso!')
     })
   }
 
