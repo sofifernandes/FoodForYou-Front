@@ -32,6 +32,10 @@
       <button class="btn btn-info border border-secondary my-2 my-sm-0 mr-3" type="submit" routerLink='/cadastro-tema'>Cadastrar tema</button>      
     </div>  
 
+    <div *ngIf='auth.verificaAdmin()' >
+      <button class="btn btn-info border border-secondary my-2 my-sm-0 mr-3" type="submit" routerLink='/cadastro-interesse'>Cadastrar interesse</button>      
+    </div>
+
     <div *ngIf='auth.btnLogin()'>
       <button class="btn btn-info border border-secondary my-2 my-sm-0 mr-3" type="submit" routerLink="/login">Entrar</button>
     </div>
