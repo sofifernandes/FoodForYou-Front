@@ -3,9 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertasComponent } from '../alertas/alertas.component';
 import { Postagem } from '../model/postagem';
 import { Tema } from '../model/Tema';
+import { Interesse } from '../model/Interesse';
 import { AlertasService } from '../service/alertas.service';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
+import { InteresseService } from '../service/interesse.service';
 
 @Component({
   selector: 'app-put-postagem',
@@ -21,8 +23,13 @@ export class PutPostagemComponent implements OnInit {
   listaTemas: Tema[]
   idTema: number
 
+  interesse: Interesse = new Interesse()
+  listaInteresse: Interesse[]
+  idInteresse: number
+
   constructor(
     private temaService: TemaService,
+    private interesseService: InteresseService,
     private postagemService: PostagemService,
     private router: Router,
     private route: ActivatedRoute,
@@ -36,6 +43,7 @@ export class PutPostagemComponent implements OnInit {
     this.findByIdPostagem(this.idPost)
 
     this.findAllTemas()
+    this.findAllInteresse()
   }
 
   findByIdPostagem(id: number) {
@@ -46,7 +54,9 @@ export class PutPostagemComponent implements OnInit {
 
   salvar() {
     this.tema.id = this.idTema
+    this.interesse.id = this.idInteresse
     this.postagem.tema = this.tema
+    this.postagem.interesse = this.interesse
 
     this.postagemService.putPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
@@ -64,11 +74,23 @@ export class PutPostagemComponent implements OnInit {
       this.listaTemas= resp
     })
   }
- 
+
   findByIdTema() {
     this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema) => {
       this.tema = resp
     })
   }
+
+  findAllInteresse() {
+    this.interesseService.getAllInteresse().subscribe((resp: Interesse[]) => {
+      this.listaInteresse= resp
+    })
+  }
+
+  findByIdInteresse() {
+    this.interesseService.getByIdInteresse(this.idInteresse).subscribe((resp: Interesse) => {
+      this.interesse = resp
+    })
+  }  
 
 }

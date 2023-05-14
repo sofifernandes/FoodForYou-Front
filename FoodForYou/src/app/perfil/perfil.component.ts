@@ -78,6 +78,8 @@ export class PerfilComponent implements OnInit {
 
   publicar() {
     this.tema.id= this.idTema
+    this.interesse.id= this.idInteresse
+    this.postagem.interesse = this.interesse 
     this.postagem.tema = this.tema 
     this.user.id= environment.idUser
     this.postagem.usuario = this.user
