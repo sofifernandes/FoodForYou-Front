@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Comentario } from '../model/comentario';
+import { Comentario } from '../model/Comentario';
 import { AlertasService } from '../service/alertas.service';
 import { ComentarioService } from '../service/comentario.service';
 

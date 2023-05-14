@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Comentario } from '../model/Comentario';
+import { Postagem } from '../model/postagem';
+import { User } from '../model/User';
 import { AlertasService } from '../service/alertas.service';
 import { ComentarioService } from '../service/comentario.service';
+import { environment } from '../../environments/environment.prod';
 
 @Component({
   selector: 'app-post-comentario',
@@ -10,6 +13,14 @@ import { ComentarioService } from '../service/comentario.service';
   styleUrls: ['./post-comentario.component.css']
 })
 export class PostComentarioComponent implements OnInit {
+
+  key = 'data'
+  reverse = true
+
+  postagem: Postagem = new Postagem()
+  listaPostagens: Postagem[]
+
+  user: User = new User()
 
   comentario: Comentario = new Comentario()
   listaComentarios: Comentario[]
@@ -24,24 +35,37 @@ export class PostComentarioComponent implements OnInit {
     this.findAllComentarios()
   }
 
-  findAllComentarios(){
+  findAllComentarios() {
     this.comentarioService.getAllComentarios().subscribe((resp: Comentario[]) => {
       this.listaComentarios = resp
     })
   }
 
-  findByIdComentario(){
+  findByIdComentario() {
     this.comentarioService.getByIdComentario(this.comentario.id).subscribe((resp: Comentario) => {
       this.comentario = resp;
     })
   }
 
-  cadastrar(){
-      this.comentarioService.postComentario(this.comentario).subscribe((resp: Comentario) => {
-        this.comentario = resp
-        this.router.navigate(['/perfil'])
-        this.alert.showAlertSuccess('Tema cadastrado com sucesso!')
-      })    
-  }  
+  publicar() {
+    this.comentario.id = this.comentario.id
+    this.postagem.comentario = this.comentario
+    this.user.id = environment.idUser
+    this.postagem.usuario = this.user
+    this.comentarioService.postComentario(this.comentario).subscribe((resp: Comentario) => {
+      this.comentario = resp
+      this.comentario = new Comentario()
+      this.alert.showAlertSuccess('Postagem realizada com sucesso!')
+      this.findAllComentarios()
+    })
+  }
+
+  cadastrar() {
+    this.comentarioService.postComentario(this.comentario).subscribe((resp: Comentario) => {
+      this.comentario = resp
+      this.router.navigate(['/perfil'])
+      this.alert.showAlertSuccess('Tema cadastrado com sucesso!')
+    })
+  }
 
 }
