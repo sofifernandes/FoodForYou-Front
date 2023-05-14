@@ -34,7 +34,7 @@ const routes: Routes = [
   {path: 'editar-tema/:id', component: PutTemaComponent},
   {path: 'editar-interesse/:id', component: PutInteresseComponent},
   {path: 'delete-tema/:id', component: DeleteTemaComponent},
-  {path: 'delete-interesse/:id', component: DeleteInteresseComponent},,
+  {path: 'delete-interesse/:id', component: DeleteInteresseComponent},
   {path: 'informações', component: InformacoesComponent}
 ];
 
