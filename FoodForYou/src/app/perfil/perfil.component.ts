@@ -8,6 +8,8 @@ import { TemaService } from '../service/tema.service';
 import { UsuarioService } from '../service/usuario.service';
 import { environment } from '../../environments/environment.prod';
 import { Router } from '@angular/router';
+import { Interesse } from '../model/Interesse';
+import { InteresseService } from '../service/interesse.service';
 
 @Component({
   selector: 'app-perfil',
@@ -28,8 +30,14 @@ export class PerfilComponent implements OnInit {
 
   listaTema: Tema[]
 
+  interesse: Interesse = new Interesse()
+  nomeInteresse: string
+
+  listaInteresse: Interesse[]
+
   user: User = new User()
 
+  idInteresse: number
   idTema: number
   idUser: number
 
@@ -39,6 +47,7 @@ export class PerfilComponent implements OnInit {
     private postagemService: PostagemService,
     private usuarioService: UsuarioService, 
     private temaService: TemaService,
+    private interesseService: InteresseService,
     private alert: AlertasService,
     private router: Router
   ) { }
@@ -60,6 +69,7 @@ export class PerfilComponent implements OnInit {
     }
      
     this.findAllTemas()
+    this.findAllInteresse()
     this.fraseAleatoria()
     this.findAllUserPostagens()
     
@@ -83,6 +93,18 @@ export class PerfilComponent implements OnInit {
     }
   }
 
+  findAllInteresse() {
+    this.interesseService.getAllInteresse().subscribe((resp: Interesse[]) => {
+      this.listaInteresse = resp
+    })
+  }
+
+  findByIdInteresse() {
+    this.interesseService.getByIdInteresse(this.idInteresse).subscribe((resp: Interesse) => {
+      this.interesse = resp
+    })
+  }
+
   findAllTemas() {
     this.temaService.getAllTemas().subscribe((resp: Tema[]) => {
       this.listaTema = resp
@@ -93,7 +115,7 @@ export class PerfilComponent implements OnInit {
     this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema) => {
       this.tema = resp
     })
-  }
+  }  
 
   findByTituloPostagem() {
     if (this.titulo === '') {
@@ -114,6 +136,16 @@ export class PerfilComponent implements OnInit {
       })
     }
   }  
+
+  findByNomeInteresse() {
+    if (this.nomeInteresse === '') {
+      this.findAllInteresse()
+    } else {
+      this.interesseService.getByNomeInteresse(this.nomeInteresse).subscribe((resp: Interesse[]) => {
+        this.listaInteresse = resp
+      })
+    }
+  }
 
   fraseAleatoria() {
     let num = Math.floor(Math.random() * 3)
