@@ -1,4 +1,5 @@
-import { Postagem } from './postagem'
+import { Postagem } from './postagem';
+import { Comentario } from './comentario';
   
 export class User {
     public id: number
@@ -7,6 +8,7 @@ export class User {
     public senha: string
     public email: string
     public postagem: Postagem[]
+    public comentario: Comentario[]
     public foto: string
     public admin: boolean
   }

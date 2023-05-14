@@ -15,6 +15,9 @@ import { PostInteresseComponent } from './post-interesse/post-interesse.componen
 import { PutPostagemComponent } from './put-postagem/put-postagem.component';
 import { PutTemaComponent } from './put-tema/put-tema.component';
 import { PutInteresseComponent } from './put-interesse/put-interesse.component';
+import { PostComentarioComponent } from './post-comentario/post-comentario.component';
+import { PutComentarioComponent } from './put-comentario/put-comentario.component';
+import { DeleteComentarioComponent } from './delete-comentario/delete-comentario.component';
 import { SobreComponent } from './sobre/sobre.component';
 
 
@@ -27,14 +30,17 @@ const routes: Routes = [
   {path: 'cadastro', component: CadastroComponent },
   {path: 'cadastro-tema', component: PostTemaComponent},
   {path: 'cadastro-interesse', component: PostInteresseComponent},
+  {path: 'cadastro-comentario', component: PostComentarioComponent},
   {path: 'feed', component: FeedComponent},
   {path: 'perfil', component: PerfilComponent},
   {path: 'editar-post/:id', component: PutPostagemComponent},
   {path: 'delete-post/:id', component: DeletePostagemComponent},
   {path: 'editar-tema/:id', component: PutTemaComponent},
   {path: 'editar-interesse/:id', component: PutInteresseComponent},
+  {path: 'editar-comentario/:id', component: PutComentarioComponent},
   {path: 'delete-tema/:id', component: DeleteTemaComponent},
   {path: 'delete-interesse/:id', component: DeleteInteresseComponent},
+  {path: 'delete-comentario/:id', component: DeleteComentarioComponent},
   {path: 'informações', component: InformacoesComponent}
 ];
 

@@ -8,33 +8,10 @@
 
           <div>
               <div class="form-group">
-                <label for="titulo">Titulo da postagem</label>
-                <input type="text" class="form-control" id="titulo" aria-describedby="emailHelp" placeholder="Digite aqui o seu titulo" [(ngModel)]="postagem.titulo">
-              </div>
-
-              <div class="form-group">
-                  <label for="texto">Texto da postagem</label>
-                  <textarea class="form-control" id="texto" rows="3" placeholder="Digite aqui o seu texto" [(ngModel)]="postagem.textoPostagem"></textarea>
-              </div>
-
-              <div class="form-group m-0">
-                <label class="text-monospace" for="tema">Escolha um tema: </label>
-                <select name="tema" id='tema' [(ngModel)]="idTema" (change)="findByIdTema()" class="form-control">
-                  <option *ngFor="let item of listaTemas" value={{item.id}}>
-                    {{item.descricao}}
-                  </option>
-                </select>
-              </div>
-
-              <div class="form-group m-0">
-                <label class="text-monospace" for="interesse">Escolha um interesse: </label>
-                <select name="interesse" id='interesse' [(ngModel)]="idInteresse" (change)="findByIdInteresse()" class="form-control">
-                  <option *ngFor="let item of listaInteresse" value={{item.id}}>
-                    {{item.nome}}
-                  </option>
-                </select>
-              </div>
-
+                  <label for="texto">Texto do comentário</label>
+                  <textarea class="form-control" id="texto" rows="3" placeholder="Digite aqui o seu texto" [(ngModel)]="comentario.comentario"></textarea>
+              </div> 
+              
               <div class="d-flex justify-content-end mt-3">
                   <button type="button" class="btn btn-outline-info w-25" (click)="salvar()">Salvar</button>
               </div>
