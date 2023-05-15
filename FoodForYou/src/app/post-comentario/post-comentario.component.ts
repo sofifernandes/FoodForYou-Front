@@ -5,6 +5,7 @@ import { Postagem } from '../model/Postagem';
 import { User } from '../model/User';
 import { AlertasService } from '../service/alertas.service';
 import { ComentarioService } from '../service/comentario.service';
+import { PostagemService } from '../service/postagem.service';
 import { environment } from '../../environments/environment.prod';
 
 @Component({
@@ -29,6 +30,7 @@ export class PostComentarioComponent implements OnInit {
 
   constructor(
     private comentarioService: ComentarioService,
+    private postagemService: PostagemService,
     private router: Router,
     private alert: AlertasService
   ) { }
@@ -47,19 +49,31 @@ export class PostComentarioComponent implements OnInit {
     this.comentarioService.getByIdComentario(this.comentario.id).subscribe((resp: Comentario) => {
       this.comentario = resp;
     })
-  }  
+  }    
 
   publicar() {
-    this.comentario.postagem = this.postagem;
-    this.comentario.usuario = this.user;
-    this.comentario.postId = this.postagem.id;
-    this.comentarioService.postComentario(this.comentario).subscribe((resp: Comentario) => {
-      this.comentario = resp;
-      this.comentario = new Comentario();
-      this.alert.showAlertSuccess('Comentário realizado com sucesso!');
-      this.findAllComentarios();
+    // Check if the postagem with the given id exists in the database
+    this.postagemService.getByIdPostagem(this.postagem.id).subscribe((resp: Postagem) => {
+      // If the postagem exists, set it as the postagem property of the comentario
+      if (resp != null) {
+        this.comentario.postagem = resp;
+        this.comentario.usuario = this.user;
+        this.comentario.postId = resp.id;
+        
+        // Save the comentario to the database
+        this.comentarioService.postComentario(this.comentario).subscribe((resp: Comentario) => {
+          this.comentario = resp;
+          this.comentario = new Comentario();
+          this.alert.showAlertSuccess('Comentário realizado com sucesso!');
+          this.findAllComentarios();
+        });
+      } else {
+        // If the postagem doesn't exist, show an error message
+        this.alert.showAlertDanger('A postagem com o ID informado não existe!');
+      }
     });
   }
+  
 
   cadastrar() {
     this.comentarioService.postComentario(this.comentario).subscribe((resp: Comentario) => {

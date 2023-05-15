@@ -10,7 +10,7 @@ export class Postagem {
   public data: Date
   public tema: Tema
   public interesse: Interesse
-  public comentario: Comentario
+  public comentario: Comentario[]
   public qntCurtidas: number
   public tipoPostagem: string
   public usuario: User
