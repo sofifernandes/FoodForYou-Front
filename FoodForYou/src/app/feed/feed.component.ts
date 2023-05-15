@@ -2,7 +2,7 @@ import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
-import { Postagem } from '../model/postagem';
+import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Tema';
 import { AlertasService } from '../service/alertas.service';
 import { PostagemService } from '../service/postagem.service';

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertasComponent } from '../alertas/alertas.component';
-import { Postagem } from '../model/postagem';
+import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Tema';
 import { Interesse } from '../model/Interesse';
 import { AlertasService } from '../service/alertas.service';

@@ -31,7 +31,7 @@
 
             <div class="col-md-6">
               <div class="form-group m-0 ml-3">
-                <label class="text-monospace" for="tema">Escolha um tema </label>          
+                <label class="text-monospace" for="tema">Escolha um tema </label>
                 <select name="tema" id='tema' class="form-control" [(ngModel)]='idTema' (change)='findByIdTema()'>
                   <option *ngFor='let item of listaTema' value={{item.id}}>
                     {{item.nome}}
@@ -42,8 +42,9 @@
 
             <div class="col-md-6">
               <div class="form-group m-0 ml-3">
-                <label class="text-monospace" for="interesse">Escolha um interesse </label>          
-                <select name="interesse" id='interesse' class="form-control" [(ngModel)]='idInteresse' (change)='findByIdInteresse()'>
+                <label class="text-monospace" for="interesse">Escolha um interesse </label>
+                <select name="interesse" id='interesse' class="form-control" [(ngModel)]='idInteresse'
+                  (change)='findByIdInteresse()'>
                   <option *ngFor='let item of listaInteresse' value={{item.id}}>
                     {{item.nome}}
                   </option>
@@ -92,13 +93,16 @@
             <div class="row">
               <div class="col-md-12">
 
-                <div class="card mt-5 mb-5 shadow p-3 bg-white rounded" *ngFor="let item of listaPostagens | orderBy : key : reverse">
+                <div class="card mt-5 mb-5 shadow p-3 bg-white rounded"
+                  *ngFor="let item of listaPostagens | orderBy : key : reverse">
                   <div class="card-header">
                     <div class="row d-flex align-items-center">
                       <div class="col-md-8">
                         <h5 class="card-title"> {{item.titulo}} </h5>
-                        <small><p>Tema: {{item.tema.nome}} </p>  
-                          <p>Interesse: {{item.interesse.nome}}</p></small>
+                        <small>
+                          <p>Tema: {{item.tema.nome}} </p>
+                          <p>Interesse: {{item.interesse.nome}}</p>
+                        </small>
                       </div>
                       <div class="col-md-4 d-flex justify-content-end">
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Postagem } from '../model/postagem';
+import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Tema';
 import { User } from '../model/User';
 import { AlertasService } from '../service/alertas.service';

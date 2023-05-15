@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Comentario } from '../model/Comentario';
-import { Postagem } from '../model/postagem';
+import { Postagem } from '../model/Postagem';
 import { User } from '../model/User';
 import { AlertasService } from '../service/alertas.service';
 import { ComentarioService } from '../service/comentario.service';
@@ -13,6 +13,8 @@ import { environment } from '../../environments/environment.prod';
   styleUrls: ['./post-comentario.component.css']
 })
 export class PostComentarioComponent implements OnInit {
+
+  @Input() postId: number;
 
   key = 'data'
   reverse = true
@@ -45,19 +47,18 @@ export class PostComentarioComponent implements OnInit {
     this.comentarioService.getByIdComentario(this.comentario.id).subscribe((resp: Comentario) => {
       this.comentario = resp;
     })
-  }
+  }  
 
   publicar() {
-    this.comentario.id = this.comentario.id
-    this.postagem.comentario = this.comentario
-    this.user.id = environment.idUser
-    this.postagem.usuario = this.user
+    this.comentario.postagem = this.postagem;
+    this.comentario.usuario = this.user;
+    this.comentario.postId = this.postagem.id;
     this.comentarioService.postComentario(this.comentario).subscribe((resp: Comentario) => {
-      this.comentario = resp
-      this.comentario = new Comentario()
-      this.alert.showAlertSuccess('Comentário realizado com sucesso!')
-      this.findAllComentarios()
-    })
+      this.comentario = resp;
+      this.comentario = new Comentario();
+      this.alert.showAlertSuccess('Comentário realizado com sucesso!');
+      this.findAllComentarios();
+    });
   }
 
   cadastrar() {

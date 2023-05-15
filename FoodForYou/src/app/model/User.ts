@@ -1,5 +1,5 @@
-import { Postagem } from './postagem';
-import { Comentario } from './comentario';
+import { Postagem } from './Postagem';
+import { Comentario } from './Comentario';
   
 export class User {
     public id: number
