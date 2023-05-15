@@ -12,7 +12,6 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
   
-
   logar(userLogin: UserLogin) {
     return this.http.post('http://localhost:8080/usuario/logar', userLogin)
   }

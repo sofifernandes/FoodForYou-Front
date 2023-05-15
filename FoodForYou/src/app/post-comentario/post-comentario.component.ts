@@ -1,12 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Comentario } from '../model/Comentario';
 import { Postagem } from '../model/Postagem';
 import { User } from '../model/User';
+import { AuthService } from '../service/auth.service';
 import { AlertasService } from '../service/alertas.service';
 import { ComentarioService } from '../service/comentario.service';
 import { PostagemService } from '../service/postagem.service';
-import { environment } from '../../environments/environment.prod';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-post-comentario',
@@ -15,7 +17,7 @@ import { environment } from '../../environments/environment.prod';
 })
 export class PostComentarioComponent implements OnInit {
 
-  @Input() postId: number;
+  @Input() post: Postagem;
 
   key = 'data'
   reverse = true
@@ -32,11 +34,17 @@ export class PostComentarioComponent implements OnInit {
     private comentarioService: ComentarioService,
     private postagemService: PostagemService,
     private router: Router,
-    private alert: AlertasService
+    private alert: AlertasService,
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    private datePipe: DatePipe
   ) { }
 
   ngOnInit() {
-    this.findAllComentarios()
+    this.findAllComentarios();
+    const postId = Number(this.route.snapshot.paramMap.get('id'));
+    this.comentario.postagem = this.postagem;
+    this.postagem.id = postId;
   }
 
   findAllComentarios() {
@@ -49,38 +57,23 @@ export class PostComentarioComponent implements OnInit {
     this.comentarioService.getByIdComentario(this.comentario.id).subscribe((resp: Comentario) => {
       this.comentario = resp;
     })
-  }    
-
-  publicar() {
-    // Check if the postagem with the given id exists in the database
-    this.postagemService.getByIdPostagem(this.postagem.id).subscribe((resp: Postagem) => {
-      // If the postagem exists, set it as the postagem property of the comentario
-      if (resp != null) {
-        this.comentario.postagem = resp;
-        this.comentario.usuario = this.user;
-        this.comentario.postId = resp.id;
-        
-        // Save the comentario to the database
-        this.comentarioService.postComentario(this.comentario).subscribe((resp: Comentario) => {
-          this.comentario = resp;
-          this.comentario = new Comentario();
-          this.alert.showAlertSuccess('Comentário realizado com sucesso!');
-          this.findAllComentarios();
-        });
-      } else {
-        // If the postagem doesn't exist, show an error message
-        this.alert.showAlertDanger('A postagem com o ID informado não existe!');
-      }
-    });
   }
-  
 
-  cadastrar() {
+  Publicar() {
+    this.comentario.postagem = this.post;
+    this.comentario.usuario = this.post.usuario;
+    this.comentario.postId = this.post.id;
+
+    const formattedDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss.SSSSSS');
+    this.comentario.data = new Date(formattedDate);
+
     this.comentarioService.postComentario(this.comentario).subscribe((resp: Comentario) => {
       this.comentario = resp
-      this.router.navigate(['/feed'])
-      this.alert.showAlertSuccess('Comentário cadastrado com sucesso!')
+      this.comentario = new Comentario()
+      this.alert.showAlertSuccess('Comentário realizado com sucesso!')
+      this.findAllComentarios()
     })
   }
+
 
 }

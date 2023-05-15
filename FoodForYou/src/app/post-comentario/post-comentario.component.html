@@ -10,7 +10,8 @@
             </div>
             <div class="row d-flex align-items-end mb-3">
                 <div class="col-md-6 d-flex justify-content-end mr-0.75">
-                    <button type="button" class="btn btn-outline-info w-25" (click)='publicar()'>Publicar</button>
+                    <button type="button" class="btn btn-outline-info w-25"
+                        (click)="Publicar()">Publicar</button>
                 </div>
             </div>
         </div>
@@ -25,6 +26,7 @@
                             <div class="col-md-8">
                                 <small>
                                     <p>Comentario: {{item.comentario.comentario}}</p>
+                                    <p>Comentario: {{item.usuario.nome}}</p>
                                 </small>
                             </div>
                             <div class="col-md-4 d-flex justify-content-end">

@@ -8,5 +8,9 @@ export class Comentario {
   public data: Date
   public postagem: Postagem
   public usuario: User
-  postId: number;
+  public postId: number
+
+  constructor() {
+    this.data = new Date();
+  }
 }

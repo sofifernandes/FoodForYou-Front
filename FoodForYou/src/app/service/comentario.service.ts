@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Comentario } from '../model/comentario';
+import { Comentario } from '../model/Comentario';
 import { environment } from '../../environments/environment.prod';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -23,9 +23,9 @@ export class ComentarioService {
   }
 
   postComentario(comentario: Comentario) {
-    return this.http.post("http://localhost:8080/comentario", comentario, this.token)
+    return this.http.post("http://localhost:8080/comentario", comentario, this.token);
   }
-
+  
   putComentario(comentario: Comentario) {
     return this.http.put("http://localhost:8080/comentario", comentario, this.token)
   }
