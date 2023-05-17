@@ -14,4 +14,5 @@ export class Postagem {
   public qntCurtidas: number
   public tipoPostagem: string
   public usuario: User
+  public comentarioId: number
 }

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { OAuthModule, OAuthService } from 'angular-oauth2-oidc';
+import { DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { OrderModule } from 'ngx-order-pipe';
@@ -71,7 +72,7 @@ import { DeleteComentarioComponent } from './delete-comentario/delete-comentario
     ModalModule.forRoot(),
     OAuthModule.forRoot()
   ],
-  providers: [OAuthService],
+  providers: [OAuthService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

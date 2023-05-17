@@ -64,16 +64,18 @@ export class PostComentarioComponent implements OnInit {
     this.comentario.usuario = this.post.usuario;
     this.comentario.postId = this.post.id;
 
-    const formattedDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss.SSSSSS');
-    this.comentario.data = new Date(formattedDate);
-
     this.comentarioService.postComentario(this.comentario).subscribe((resp: Comentario) => {
       this.comentario = resp
       this.comentario = new Comentario()
+
+      this.post.comentarioId = this.comentario.id;
+
       this.alert.showAlertSuccess('Comentário realizado com sucesso!')
       this.findAllComentarios()
     })
-  }
-
+  } 
 
 }
+
+
+
