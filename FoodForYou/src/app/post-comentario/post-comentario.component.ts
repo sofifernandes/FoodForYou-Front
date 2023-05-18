@@ -47,10 +47,16 @@ export class PostComentarioComponent implements OnInit {
     this.postagem.id = postId;
   }
 
-  findAllComentarios() {
+  /*findAllComentarios() {
     this.comentarioService.getAllComentarios().subscribe((resp: Comentario[]) => {
       this.listaComentarios = resp
     })
+  }*/
+
+  findAllComentarios() {
+    this.comentarioService.getComentariosByPost(this.post.id).subscribe((resp: Comentario[]) => {
+      this.listaComentarios = resp;
+    });
   }
 
   findByIdComentario() {
@@ -59,21 +65,32 @@ export class PostComentarioComponent implements OnInit {
     })
   }
 
+ 
+
   Publicar() {
     this.comentario.postagem = this.post;
     this.comentario.usuario = this.post.usuario;
-    this.comentario.postId = this.post.id;
-
-    this.comentarioService.postComentario(this.comentario).subscribe((resp: Comentario) => {
-      this.comentario = resp
-      this.comentario = new Comentario()
-
+    console.log('Post ID:', this.post.id);
+  
+    const newComentario = new Comentario();
+    newComentario.comentario = this.comentario.comentario;
+    newComentario.data = new Date();
+    newComentario.postagem = new Postagem();
+    newComentario.postagem.id = this.post.id;
+  
+    this.comentarioService.postComentario(newComentario).subscribe((resp: Comentario) => {
+      this.comentario = resp;
+      this.comentario = new Comentario();
+  
       this.post.comentarioId = this.comentario.id;
-
-      this.alert.showAlertSuccess('Comentário realizado com sucesso!')
-      this.findAllComentarios()
-    })
-  } 
+  
+      this.alert.showAlertSuccess('Comentário realizado com sucesso!');
+      
+      // Call findAllComentarios() inside the subscription block
+      this.findAllComentarios();
+    });
+  }
+  
 
 }
 

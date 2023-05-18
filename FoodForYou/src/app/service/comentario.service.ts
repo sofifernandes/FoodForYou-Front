@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Comentario } from '../model/Comentario';
 import { environment } from '../../environments/environment.prod';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +22,12 @@ export class ComentarioService {
 
   getByIdComentario(id: number) {
     return this.http.get(`http://localhost:8080/comentario/${id}`, this.token)
+  }
+
+  getComentariosByPost(postId: number): Observable<Comentario[]> {
+    const url = `http://localhost:8080/comentario/post/${postId}`;
+  
+    return this.http.get<Comentario[]>(url);
   }
 
   postComentario(comentario: Comentario) {

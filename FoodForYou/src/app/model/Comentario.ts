@@ -8,5 +8,6 @@ export class Comentario {
   public data: Date
   public postagem: Postagem
   public usuario: User
-  public postId: number
+  public postId: number 
 }
+
