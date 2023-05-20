@@ -31,7 +31,7 @@ export class InteresseService {
   }
 
   putInteresse(interesse: Interesse) {
-    return this.http.put("http://localhost:8080/interesse", interesse, this.token)
+    return this.http.put("http://localhost:8080/interesse", interesse, this.token);
   }
 
   deleteInteresse(id: number) {

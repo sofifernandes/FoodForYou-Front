@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Comentario } from '../model/Comentario';
+import { ComentarioResponse } from '../model/ComentarioResponse';
 import { AlertasService } from '../service/alertas.service';
 import { ComentarioService } from '../service/comentario.service';
 
@@ -12,6 +13,8 @@ import { ComentarioService } from '../service/comentario.service';
 export class PutComentarioComponent implements OnInit {
 
   comentario: Comentario = new Comentario()
+
+  comentarioResponse: ComentarioResponse = new ComentarioResponse()
 
   constructor(
     private comentarioService: ComentarioService,
@@ -27,16 +30,19 @@ export class PutComentarioComponent implements OnInit {
   }
 
   findByIdComentario(id: number) {
-    this.comentarioService.getByIdComentario(id).subscribe((resp: Comentario) => {
-      this.comentario = resp
+    this.comentarioService.getByIdComentario(id).subscribe((resp: ComentarioResponse) => {
+      console.log('response findByIdComentario():', resp);
+      this.comentarioResponse = resp
     })
   }
 
   salvar() {
-      this.comentarioService.putComentario(this.comentario).subscribe((resp: Comentario) => {
-        this.comentario = resp        
-        this.alert.showAlertSuccess('Comentário atualizado com sucesso!')
-        this.router.navigate(['/feed'])
+      this.comentarioService.putComentario(this.comentario).subscribe((resp: ComentarioResponse) => {
+        this.comentarioResponse = resp
+        console.log('this.comentarioResponse');
+        this.router.navigate(['/feed'])      
+        this.alert.showAlertSuccess('Comentário atualizado com sucesso!')     
+        this.findByIdComentario(this.comentario.id)  
       })    
   }
 

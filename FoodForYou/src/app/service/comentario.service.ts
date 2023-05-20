@@ -34,11 +34,11 @@ export class ComentarioService {
   }
   
   putComentario(comentario: Comentario) {
-    return this.http.put("http://localhost:8080/comentario", comentario, this.token)
+    return this.http.put("http://localhost:8080/comentario", comentario, this.token);
   }
 
   deleteComentario(id: number) {
-    return this.http.delete(`http://localhost:8080/comentario/${id}`, this.token)
+    return this.http.delete(`http://localhost:8080/comentario/${id}`, this.token);
   }
 
 }
