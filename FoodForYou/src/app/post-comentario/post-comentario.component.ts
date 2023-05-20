@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Comentario } from '../model/Comentario';
+import { ComentarioResponse } from '../model/ComentarioResponse';
 import { Postagem } from '../model/Postagem';
 import { User } from '../model/User';
 import { AuthService } from '../service/auth.service';
@@ -28,7 +29,7 @@ export class PostComentarioComponent implements OnInit {
   user: User = new User()
 
   comentario: Comentario = new Comentario()
-  listaComentarios: Comentario[]
+  listaComentarios: ComentarioResponse[]
 
   constructor(
     private comentarioService: ComentarioService,
@@ -41,35 +42,31 @@ export class PostComentarioComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log('ngOnInit');
     this.findAllComentarios();
+    console.log('findAllComentarios');
     const postId = Number(this.route.snapshot.paramMap.get('id'));
     this.comentario.postagem = this.postagem;
     this.postagem.id = postId;
   }
 
-  /*findAllComentarios() {
-    this.comentarioService.getAllComentarios().subscribe((resp: Comentario[]) => {
-      this.listaComentarios = resp
-    })
-  }*/
-
   findAllComentarios() {
-    this.comentarioService.getComentariosByPost(this.post.id).subscribe((resp: Comentario[]) => {
+    this.comentarioService.getComentariosByPost(this.post.id).subscribe((resp: ComentarioResponse[]) => {
+      console.log('getComentariosByPost: ', resp);
       this.listaComentarios = resp;
+      console.log('listaComentarios');
     });
   }
+    
 
   findByIdComentario() {
     this.comentarioService.getByIdComentario(this.comentario.id).subscribe((resp: Comentario) => {
       this.comentario = resp;
     })
-  }
-
- 
+  } 
 
   Publicar() {
     this.comentario.postagem = this.post;
-    this.comentario.usuario = this.post.usuario;
     console.log('Post ID:', this.post.id);
   
     const newComentario = new Comentario();
@@ -85,12 +82,10 @@ export class PostComentarioComponent implements OnInit {
       this.post.comentarioId = this.comentario.id;
   
       this.alert.showAlertSuccess('Comentário realizado com sucesso!');
-      
-      // Call findAllComentarios() inside the subscription block
+
       this.findAllComentarios();
     });
-  }
-  
+  }  
 
 }
 

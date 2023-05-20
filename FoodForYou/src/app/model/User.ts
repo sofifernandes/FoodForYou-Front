@@ -1,5 +1,4 @@
 import { Postagem } from './Postagem';
-import { Comentario } from './Comentario';
   
 export class User {
     public id: number
@@ -8,7 +7,6 @@ export class User {
     public senha: string
     public email: string
     public postagem: Postagem[]
-    public comentario: Comentario[]
     public foto: string
     public admin: boolean
   }
