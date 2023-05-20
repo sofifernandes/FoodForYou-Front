@@ -34,9 +34,9 @@ export class PutComentarioComponent implements OnInit {
 
   salvar() {
       this.comentarioService.putComentario(this.comentario).subscribe((resp: Comentario) => {
-        this.comentario = resp
-        this.router.navigate(['/cadastro-tema'])
+        this.comentario = resp        
         this.alert.showAlertSuccess('Comentário atualizado com sucesso!')
+        this.router.navigate(['/feed'])
       })    
   }
 

@@ -77,12 +77,8 @@ export class PostComentarioComponent implements OnInit {
   
     this.comentarioService.postComentario(newComentario).subscribe((resp: Comentario) => {
       this.comentario = resp;
-      this.comentario = new Comentario();
-  
-      this.post.comentarioId = this.comentario.id;
-  
+      this.comentario = new Comentario();  
       this.alert.showAlertSuccess('Comentário realizado com sucesso!');
-
       this.findAllComentarios();
     });
   }  
