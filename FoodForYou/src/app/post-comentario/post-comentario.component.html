@@ -17,7 +17,7 @@
                 <div class="row d-flex align-items-center">
                     <div class="col-md-8">
                         <small>
-                            <p>Comentario: {{item.comentario.comentario}}</p>
+                            <p>Comentario: {{comentario.comentario}}</p>
                         </small>
                     </div>
                     <div class="col-md-4 d-flex justify-content-end">
@@ -26,9 +26,12 @@
                             Editar
                         </button>
 
+                        <input  type="text"  name="comentario.id" value="{{ item.id }}">
+
                         <button class="btn btn-outline-danger ml-3" [routerLink]="['/delete-comentario', item.id]">
                             Apagar
                         </button>
+                        
                     </div>
                 </div>
             </div>

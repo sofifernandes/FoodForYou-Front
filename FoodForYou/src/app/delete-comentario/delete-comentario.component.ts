@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Comentario } from '../model/Comentario';
 import { AlertasService } from '../service/alertas.service';
 import { ComentarioService } from '../service/comentario.service';
+import { Postagem } from '../model/Postagem';
+import { ComentarioResponse } from '../model/ComentarioResponse';
 
 @Component({
   selector: 'app-delete-comentario',
@@ -11,7 +13,13 @@ import { ComentarioService } from '../service/comentario.service';
 })
 export class DeleteComentarioComponent implements OnInit {
 
+  @Input() post: Postagem;
+
   comentario: Comentario = new Comentario()
+
+  postagem: Postagem = new Postagem()
+  
+  listaComentarios: ComentarioResponse[]
 
   constructor(
     private comentarioService: ComentarioService,
@@ -22,9 +30,11 @@ export class DeleteComentarioComponent implements OnInit {
 
   ngOnInit() {
     window.scroll(0,0)
-
     let id: number = this.route.snapshot.params['id']
-    this.findByIdComentario(id)
+    this.findByIdComentario(id);
+    const postId = Number(this.route.snapshot.paramMap.get('id'));
+    this.comentario.postagem = this.postagem;
+    this.postagem.id = postId;
 
   }
 
@@ -35,9 +45,10 @@ export class DeleteComentarioComponent implements OnInit {
   }
 
   btnSim() {
-    this.comentarioService.deleteComentario(this.comentario.id).subscribe(() => {
-      this.router.navigate(['/feed'])
+    console.log('id comentario: ', this.comentario.id);
+    this.comentarioService.deleteComentario(this.comentario.id).subscribe(() => {      
       this.alert.showAlertSuccess('Comentario apagado com sucesso!')
+      this.router.navigate(['/feed'])
     })
   }
 

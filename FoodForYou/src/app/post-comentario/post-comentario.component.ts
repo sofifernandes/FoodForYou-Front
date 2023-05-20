@@ -29,6 +29,7 @@ export class PostComentarioComponent implements OnInit {
   user: User = new User()
 
   comentario: Comentario = new Comentario()
+  comentarioResponse: ComentarioResponse = new ComentarioResponse()
   listaComentarios: ComentarioResponse[]
 
   constructor(
@@ -42,22 +43,18 @@ export class PostComentarioComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('ngOnInit');
-    this.findAllComentarios();
-    console.log('findAllComentarios');
+    this.findAllComentariosByPost();
     const postId = Number(this.route.snapshot.paramMap.get('id'));
     this.comentario.postagem = this.postagem;
     this.postagem.id = postId;
   }
 
-  findAllComentarios() {
+  findAllComentariosByPost() {
     this.comentarioService.getComentariosByPost(this.post.id).subscribe((resp: ComentarioResponse[]) => {
       console.log('getComentariosByPost: ', resp);
-      this.listaComentarios = resp;
-      console.log('listaComentarios');
+      this.listaComentarios= resp;
     });
-  }
-    
+  }    
 
   findByIdComentario() {
     this.comentarioService.getByIdComentario(this.comentario.id).subscribe((resp: Comentario) => {
@@ -77,9 +74,11 @@ export class PostComentarioComponent implements OnInit {
   
     this.comentarioService.postComentario(newComentario).subscribe((resp: Comentario) => {
       this.comentario = resp;
-      this.comentario = new Comentario();  
+      this.comentario = new Comentario();
+  
       this.alert.showAlertSuccess('Comentário realizado com sucesso!');
-      this.findAllComentarios();
+
+      this.findAllComentariosByPost();
     });
   }  
 

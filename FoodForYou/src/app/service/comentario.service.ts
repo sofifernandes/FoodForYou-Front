@@ -22,10 +22,10 @@ export class ComentarioService {
   }
 
   getByIdComentario(id: number) {
-    return this.http.get("http://localhost:8080/comentario/${id}", this.token)
+    return this.http.get(`http://localhost:8080/comentario/${id}`, this.token)
   }
 
-  getComentariosByPost(postId: number) {  
+  getComentariosByPost(postId: number) { 
     return this.http.get(`http://localhost:8080/comentario/post/${postId}`, this.token);
   }
  
