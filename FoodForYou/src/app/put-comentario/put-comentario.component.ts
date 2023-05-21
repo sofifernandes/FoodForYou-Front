@@ -39,11 +39,10 @@ export class PutComentarioComponent implements OnInit {
   salvar() {
       this.comentarioService.putComentario(this.comentario).subscribe((resp: ComentarioResponse) => {
         this.comentarioResponse = resp
-        console.log('this.comentarioResponse');
         this.router.navigate(['/feed'])      
         this.alert.showAlertSuccess('Comentário atualizado com sucesso!')     
         this.findByIdComentario(this.comentario.id)  
       })    
-  }
+  }  
 
 }
