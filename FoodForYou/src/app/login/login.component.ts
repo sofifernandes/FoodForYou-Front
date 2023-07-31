@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { UserLogin } from '../model/UserLogin';
 import { AuthService } from '../service/auth.service';
 import { environment } from '../../environments/environment.prod';
-import { OAuthService, JwksValidationHandler } from 'angular-oauth2-oidc';
+import { environmentGoogle } from '../../environments/environment.prod-google';
+import { OAuthService } from 'angular-oauth2-oidc';
 import { User } from '../model/User';
 
 @Component({
@@ -47,9 +48,8 @@ export class LoginComponent implements OnInit {
       });
     } else {
       this.configureOAuthService('google', environment['prod-google'].clientId);
-      this.configureOAuthService('facebook', environment['prod-facebook'].clientId );
+      this.configureOAuthService('facebook', environment['prod-facebook'].clientId);
       this.configureOAuthService('github', environment['prod-github'].clientId);
-      this.oauthService.tokenValidationHandler = new JwksValidationHandler();
       this.handleOAuthLogin('google');
     }
   }
@@ -62,38 +62,56 @@ export class LoginComponent implements OnInit {
     this.isOAuthLogin = false;
   }
 
+  loginWithOAuth(provider: string) {
+    this.isOAuthLogin = true; // Set the flag to indicate OAuth login
+    
+    // Pass the selected OAuth provider and its corresponding clientId to the configureOAuthService function
+    if (provider === 'google') {
+      this.configureOAuthService('google', environmentGoogle.clientId);
+    } else if (provider === 'facebook') {
+      // Replace 'environmentFacebook' with the appropriate object for Facebook configuration, if you have one.
+      this.configureOAuthService('facebook', 'YOUR_FACEBOOK_CLIENT_ID_HERE');
+    } else if (provider === 'github') {
+      // Replace 'environmentGitHub' with the appropriate object for GitHub configuration, if you have one.
+      this.configureOAuthService('github', 'YOUR_GITHUB_CLIENT_ID_HERE');
+    }
+    
+    // Now call the handleOAuthLogin function with the selected provider to initiate the OAuth login flow
+    this.handleOAuthLogin(provider);
+  }
+
   configureOAuthService(provider: string, clientId: string) {
     let config: any;
 
     if (provider === 'google') {
       config = {
-        clientId: clientId,
         issuer: 'https://accounts.google.com',
-        redirectUri: 'http://localhost:4200/login/oauth2/code/google',
-        scope: 'openid profile email',
+        strictDiscoveryDocumentValidation: false,
+        redirectUri: window.location.origin,
+        clientId: '622687646351-2us02pog9j0tnjcflfmrd9fgj40808p5.apps.googleusercontent.com',
+        scope: 'openid profile email https://www.googleapis.com/auth/gmail.readonly',
         showDebugInformation: true,
         responseType: 'code',
       };
       this.oauthService.configure(config);
       this.oauthService.setStorage(localStorage);
-      this.oauthService.tokenValidationHandler = new JwksValidationHandler();
       this.oauthService.loadDiscoveryDocumentAndLogin().then(() => {
         // After successful login, redirect to home page
-        this.router.navigate(['/home']);
+        this.router.navigate(['/perfil']);
       });
 
     } else if (provider === 'facebook') {
       config = {
-        clientId: clientId,
-        issuer: 'https://www.facebook.com',
-        redirectUri: window.location.origin + '/login',
-        scope: 'email',
+        issuer: 'https://accounts.google.com',
+        strictDiscoveryDocumentValidation: false,
+        redirectUri: window.location.origin,
+        clientId: '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',
+        scope: 'openid profile email https://www.googleapis.com/auth/gmail.readonly',
         showDebugInformation: true,
         responseType: 'code',
       };
       this.oauthService.configure(config);
       this.oauthService.setStorage(localStorage);
-      this.oauthService.tokenValidationHandler = new JwksValidationHandler();
       this.oauthService.loadDiscoveryDocumentAndLogin().then(() => {
         // After successful login, redirect to home page
         this.router.navigate(['/home']);
@@ -110,12 +128,11 @@ export class LoginComponent implements OnInit {
       };
       this.oauthService.configure(config);
       this.oauthService.setStorage(localStorage);
-      this.oauthService.tokenValidationHandler = new JwksValidationHandler();
       this.oauthService.loadDiscoveryDocumentAndLogin().then(() => {
         // After successful login, redirect to home page
         this.router.navigate(['/home']);
       });
-    }    
+    }
   }
 
   handleOAuthLogin(provider: string) {

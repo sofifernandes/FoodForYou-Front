@@ -41,7 +41,7 @@ export class PutComentarioComponent implements OnInit {
         this.comentarioResponse = resp
         this.router.navigate(['/feed'])      
         this.alert.showAlertSuccess('Comentário atualizado com sucesso!')     
-        this.findByIdComentario(this.comentario.id)  
+        this.findByIdComentario(this.comentarioResponse.id)  
       })    
   }  
 
