@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { Interesse } from '../model/Interesse';
 import { AlertasService } from '../service/alertas.service';
 import { InteresseService } from '../service/interesse.service';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-post-interesse',
@@ -47,5 +50,34 @@ export class PostInteresseComponent implements OnInit {
       })
     }
   }  
+
+  generatePDF() {
+    const interesses = this.listaInteresses.map((item, index) => [index + 1, item.nome]);
+  
+    const documentDefinition = {
+      content: [
+        { text: 'Lista de Interesses', style: 'header' },
+        {
+          table: {
+            headerRows: 1,
+            widths: [30, '*'],
+            body: [
+              ['Nº', 'Nome do Interesse'],
+              ...interesses,
+            ],
+          },
+        },
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+          alignment: 'center',
+        },
+      },
+    };
+  
+    pdfMake.createPdf(documentDefinition).download('lista-interesses.pdf');
+  }
 
 }

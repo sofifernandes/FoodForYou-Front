@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import { Tema } from '../model/Tema';
 import { AlertasService } from '../service/alertas.service';
 import { TemaService } from '../service/tema.service';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 
 @Component({
   selector: 'app-post-tema',
@@ -48,5 +52,35 @@ export class PostTemaComponent implements OnInit {
       })
     }
   }  
+
+  generatePDF() {
+    const themes = this.listaTemas.map((item, index) => [index + 1, item.nome]);
+  
+    const documentDefinition = {
+      content: [
+        { text: 'Lista de temas', style: 'header' },
+        {
+          table: {
+            headerRows: 1,
+            widths: [30, '*'],
+            body: [
+              ['Nº', 'Nome do Tema'],
+              ...themes,
+            ],
+          },
+        },
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+          alignment: 'center',
+        },
+      },
+    };
+  
+    pdfMake.createPdf(documentDefinition).download('theme-list.pdf');
+  }
+  
 
 }

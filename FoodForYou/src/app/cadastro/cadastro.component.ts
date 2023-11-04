@@ -33,7 +33,7 @@ export class CadastroComponent implements OnInit {
 
   cadastrar() {
     if (this.senha === this.user.senha) {
-      if(this.user.email === 'HoldingHands.PI@gmail.com'){
+      if(this.user.email === 'FoodForYou.PI@gmail.com'){
         this.user.admin = true
       } else { 
         this.user.admin = false

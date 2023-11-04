@@ -34,6 +34,7 @@
     "jquery": "^3.5.1",
     "ngx-bootstrap": "^6.1.0",
     "ngx-order-pipe": "^2.1.0",
+    "pdfmake": "^0.2.7",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.7",
     "tslib": "^2.0.0",

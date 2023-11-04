@@ -1,6 +1,6 @@
 #iconeNavBar {
-    content: url("https://i.imgur.com/G2rX04v.png");
-    width: 60px;
+    content: url("https://i.imgur.com/gVCbakZ.png");
+    width: 50px;
 }
 
 a{
@@ -8,10 +8,18 @@ a{
 }
 
 .borderColor {
-    border-color: #428bca;
+    border-color: #cc3709;
 }
 
 .corBotao:hover {
-    background-color: #17a2b8 !important;
+    background-color: #cc3709 !important;
     color: white !important;
+}
+
+.custom-navbar {
+    background-color:  rgba(255, 255, 255, 0.103)
+}
+
+.corbotao{
+    color: #cc3709;
 }

@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
   }
 
   entrar() {
-    // Log in using existing authentication method
     if (!this.isOAuthLogin) {
       this.authService.logar(this.userLogin).subscribe((resp: UserLogin) => {
         this.userLogin = resp;
@@ -46,11 +45,6 @@ export class LoginComponent implements OnInit {
 
         this.router.navigate(['/home']);
       });
-    } else {
-      this.configureOAuthService('google', environment['prod-google'].clientId);
-      this.configureOAuthService('facebook', environment['prod-facebook'].clientId);
-      this.configureOAuthService('github', environment['prod-github'].clientId);
-      this.handleOAuthLogin('google');
     }
   }
 
@@ -63,20 +57,14 @@ export class LoginComponent implements OnInit {
   }
 
   loginWithOAuth(provider: string) {
-    this.isOAuthLogin = true; // Set the flag to indicate OAuth login
-    
-    // Pass the selected OAuth provider and its corresponding clientId to the configureOAuthService function
+    this.isOAuthLogin = true; 
     if (provider === 'google') {
       this.configureOAuthService('google', environmentGoogle.clientId);
     } else if (provider === 'facebook') {
-      // Replace 'environmentFacebook' with the appropriate object for Facebook configuration, if you have one.
       this.configureOAuthService('facebook', 'YOUR_FACEBOOK_CLIENT_ID_HERE');
     } else if (provider === 'github') {
-      // Replace 'environmentGitHub' with the appropriate object for GitHub configuration, if you have one.
       this.configureOAuthService('github', 'YOUR_GITHUB_CLIENT_ID_HERE');
-    }
-    
-    // Now call the handleOAuthLogin function with the selected provider to initiate the OAuth login flow
+    }    
     this.handleOAuthLogin(provider);
   }
 
@@ -113,7 +101,6 @@ export class LoginComponent implements OnInit {
       this.oauthService.configure(config);
       this.oauthService.setStorage(localStorage);
       this.oauthService.loadDiscoveryDocumentAndLogin().then(() => {
-        // After successful login, redirect to home page
         this.router.navigate(['/home']);
       });
 
@@ -129,7 +116,6 @@ export class LoginComponent implements OnInit {
       this.oauthService.configure(config);
       this.oauthService.setStorage(localStorage);
       this.oauthService.loadDiscoveryDocumentAndLogin().then(() => {
-        // After successful login, redirect to home page
         this.router.navigate(['/home']);
       });
     }
@@ -138,7 +124,7 @@ export class LoginComponent implements OnInit {
   handleOAuthLogin(provider: string) {
     if (this.isOAuthLogin && provider === 'google') {
       this.oauthService.initImplicitFlow();
-      return; // return to prevent the basic login flow from executing
+      return;
     } else if (this.isOAuthLogin && provider === 'facebook') {
       this.oauthService.initImplicitFlow();
       return;

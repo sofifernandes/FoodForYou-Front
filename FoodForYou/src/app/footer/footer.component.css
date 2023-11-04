@@ -12,17 +12,21 @@ ul.social-network {
   }
   
   .faGithub, .faInstagram{
-      color: #428bca;
+      color: #070707;
   }
 
   .colorFooter {
-    background-color: #428bca;
+    background-color: #f8e6b2;
   }
   
   .faGithub:hover{
-    color: #171515;
+    color: #8ee47dc0;
   }
     
   .faInstagram:hover{
-  color: #C13584;
+    color: #8ee47dc0;
+  }
+
+  .corTexto{
+    color: #171515;
   }

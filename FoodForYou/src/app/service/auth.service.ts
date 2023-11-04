@@ -55,9 +55,7 @@ export class AuthService {
 
   public getToken(code: string): Observable<any> {
     let body = new URLSearchParams();
-    body.set('grant_type', environmentGoogle.grant_type);
     body.set('client_id', environmentGoogle.clientId);
-    body.set('redirect_uri', environmentGoogle.redirect_uri);
     body.set('scope', environmentGoogle.scope);
     body.set('code', code);
     const basic_auth = 'Basic '+ btoa('client:secret');

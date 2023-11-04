@@ -10,6 +10,9 @@ import { environment } from '../../environments/environment.prod';
 import { Router } from '@angular/router';
 import { Interesse } from '../model/Interesse';
 import { InteresseService } from '../service/interesse.service';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-perfil',
@@ -164,6 +167,35 @@ export class PerfilComponent implements OnInit {
     this.usuarioService.getByIdUser(environment.idUser).subscribe((resp: User) => {    
       this.listaPostagens = resp.postagem
     })
+  }
+
+  generatePDF() {
+    const postagens = this.listaPostagens.map((item, index) => [index + 1, item.titulo]);
+  
+    const documentDefinition = {
+      content: [
+        { text: 'Lista de Postagens', style: 'header' },
+        {
+          table: {
+            headerRows: 1,
+            widths: [30, '*'],
+            body: [
+              ['Nº', 'Postagem'],
+              ...postagens,
+            ],
+          },
+        },
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+          alignment: 'center',
+        },
+      },
+    };
+  
+    pdfMake.createPdf(documentDefinition).download('lista-postagens.pdf');
   }
 
   
