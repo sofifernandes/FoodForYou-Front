@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../model/User';
 import { environment } from '../../environments/environment.prod';
 
@@ -14,10 +15,17 @@ export class PerfilLateralComponent implements OnInit {
   nomeUser = environment.nomeUser
   fotoUser = environment.fotoUser
 
-  constructor() { }    
+  constructor(
+    private router: Router
+  ) { }    
 
   ngOnInit() {
+    this.nomeUser = environment.nomeUser
+    this.fotoUser = environment.fotoUser
+  }
 
+  editNome() {
+    this.router.navigate(['/editar-cadastro'])
   }
 
 }

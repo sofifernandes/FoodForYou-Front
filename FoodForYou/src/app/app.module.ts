@@ -33,6 +33,7 @@ import { PutInteresseComponent } from './put-interesse/put-interesse.component';
 import { PostComentarioComponent } from './post-comentario/post-comentario.component';
 import { PutComentarioComponent } from './put-comentario/put-comentario.component';
 import { DeleteComentarioComponent } from './delete-comentario/delete-comentario.component';
+import { EditarCadastroComponent } from './editar-cadastro/editar-cadastro.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { DeleteComentarioComponent } from './delete-comentario/delete-comentario
     PutInteresseComponent,
     PostComentarioComponent,
     PutComentarioComponent,
-    DeleteComentarioComponent
+    DeleteComentarioComponent,
+    EditarCadastroComponent
   ],
   imports: [
     BrowserModule,
