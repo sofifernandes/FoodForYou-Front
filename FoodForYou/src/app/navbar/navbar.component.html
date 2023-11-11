@@ -29,11 +29,11 @@
     </ul>
 
     <div *ngIf='auth.verificaAdmin()' >
-      <button class="btn btn-info border corbotao border-secondary my-2 my-sm-0 mr-3" type="submit" routerLink='/cadastro-tema'>Cadastrar tema</button>      
+      <button class="btn border corbotao border-secondary my-2 my-sm-0 mr-3" type="submit" routerLink='/cadastro-tema'>Cadastrar tema</button>      
     </div>  
 
     <div *ngIf='auth.verificaAdmin()' >
-      <button class="btn btn-info border corbotao border-secondary my-2 my-sm-0 mr-3" type="submit" routerLink='/cadastro-interesse'>Cadastrar interesse</button>      
+      <button class="btn border corbotao border-secondary my-2 my-sm-0 mr-3" type="submit" routerLink='/cadastro-interesse'>Cadastrar interesse</button>      
     </div>
 
     <div *ngIf='auth.btnLogin()'>
@@ -45,7 +45,7 @@
     </div>
 
     <div *ngIf='auth.btnSair()'>
-      <button class="btn btn-info  corbotao my-2 my-sm-0 mr-3" type="submit" (click)='sair()'>Sair</button>
+      <button class="btn btn-outline-danger corbotao my-2 my-sm-0 mr-3" type="submit" (click)='sair()'>Sair</button>
     </div>
   </div>
 </nav>

@@ -44,6 +44,9 @@ export class PerfilComponent implements OnInit {
   idTema: number
   idUser: number
 
+  nomeUser: string
+  fotoUser: string
+
   frasePostagem: string
 
   constructor(
@@ -56,26 +59,22 @@ export class PerfilComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    window.scroll(0, 0)
 
     let token = environment.token
 
-    if(token == ''){
-      this.router.navigate(['/login'])
-      this.alert.showAlertInfo('Faça o login antes de entrar no feed...')
-    }
-
-    window.scroll(0, 0)
-
-    if(environment.token == '') {
+    if(token == '') {
       this.alert.showAlertInfo("Você precisa estar logado para acessar")
       this.router.navigate(["/login"])
     }
-     
+
+    this.nomeUser = environment.nomeUser
+    this.fotoUser = environment.fotoUser
+
     this.findAllTemas()
     this.findAllInteresse()
     this.fraseAleatoria()
-    this.findAllUserPostagens()
-    
+    this.findAllUserPostagens()    
   }
 
 
@@ -86,6 +85,7 @@ export class PerfilComponent implements OnInit {
     this.postagem.tema = this.tema 
     this.user.id= environment.idUser
     this.postagem.usuario = this.user
+    this.postagem.tipoPostagem = 'tipo genérico'
     if(this.postagem.titulo == null || this.postagem.textoPostagem == null || this.postagem.tema == null){
       this.alert.showAlertDanger('Preencha todos os campos antes de publicar!')
     } else {
@@ -96,6 +96,7 @@ export class PerfilComponent implements OnInit {
         this.findAllUserPostagens()
       })
     }
+    this.findAllUserPostagens()
   }
 
   findAllInteresse() {
