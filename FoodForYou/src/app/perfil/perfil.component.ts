@@ -93,10 +93,9 @@ export class PerfilComponent implements OnInit {
         this.postagem = resp
         this.postagem = new Postagem()
         this.alert.showAlertSuccess('Postagem realizada com sucesso!')
-        this.findAllUserPostagens()
+        this.findAllUserPostagens() 
       })
     }
-    this.findAllUserPostagens()
   }
 
   findAllInteresse() {

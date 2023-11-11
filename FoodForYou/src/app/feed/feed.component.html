@@ -39,6 +39,18 @@
                                     *ngFor="let item of listaTemaSelected | orderBy : key : reverse">
                                     <div *ngFor='let post of item.postagem'>
                                         <div class="card-header">
+                                            <div class="row mb-2 d-flex align-items-center">
+                                                <div class="col-md-12 d-flex align-items-center">
+                                                    <div>
+                                                        <img class="rounded-circle" src="{{post.usuario ? post.usuario.foto : 'fallback-image-url'}}" alt="foto do dono da postagem" style="width: 40px;">
+                                                    </div>
+                                                    <div class="ml-3">
+                                                        <p class="mt-auto mb-auto"
+                                                            style="font-size: 20px; text-transform: capitalize;">
+                                                            {{post.usuario.nome}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="row d-flex align-items-center">
                                                 <div class="col-md-8">
                                                     <h5 class="card-title">{{post.titulo}}</h5>

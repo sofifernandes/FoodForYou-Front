@@ -27,6 +27,8 @@ export class FeedComponent implements OnInit {
   idTema: number
   btnTemas: string
 
+  inicioSelected: boolean
+  temaSelected: boolean
 
   constructor(
     private postagemService: PostagemService, 
@@ -80,6 +82,17 @@ export class FeedComponent implements OnInit {
         this.listaTemaSelected = resp
       })
   }
+
+  verificaInicioSelected() {
+    let ok = this.inicioSelected
+    return ok
+  }
+
+  verificaTemaSelected() {
+    let ok = this.temaSelected
+    return ok
+  }
+
 }
 
  
