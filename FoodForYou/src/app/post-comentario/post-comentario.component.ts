@@ -51,7 +51,6 @@ export class PostComentarioComponent implements OnInit {
 
   findAllComentariosByPost() {
     this.comentarioService.getComentariosByPost(this.post.id).subscribe((resp: ComentarioResponse[]) => {
-      console.log('getComentariosByPost: ', resp);
       this.listaComentarios= resp;
     });
   }    
@@ -62,15 +61,18 @@ export class PostComentarioComponent implements OnInit {
     })
   } 
 
+  
+
   Publicar() {
     this.comentario.postagem = this.post;
-    console.log('Post ID:', this.post.id);
   
     const newComentario = new Comentario();
     newComentario.comentario = this.comentario.comentario;
     newComentario.data = new Date();
     newComentario.postagem = new Postagem();
     newComentario.postagem.id = this.post.id;
+    console.log(this.post.id);   
+
   
     this.comentarioService.postComentario(newComentario).subscribe((resp: Comentario) => {
       this.comentario = resp;

@@ -85,6 +85,9 @@ export class PerfilComponent implements OnInit {
     this.postagem.tema = this.tema 
     this.user.id= environment.idUser
     this.postagem.usuario = this.user
+    this.postagem.usuario.nome = environment.nomeUser
+    this.postagem.usuario.foto = environment.fotoUser
+    this.postagem.usuario.id = environment.idUser
     this.postagem.tipoPostagem = 'tipo genérico'
     if(this.postagem.titulo == null || this.postagem.textoPostagem == null || this.postagem.tema == null){
       this.alert.showAlertDanger('Preencha todos os campos antes de publicar!')

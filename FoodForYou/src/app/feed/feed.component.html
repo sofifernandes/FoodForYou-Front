@@ -1,48 +1,80 @@
 <div class="parallax-fundo">
+
     <div class="container"
         style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
-
         <div class="row d-flex justify-content-center">
             <div class="mt-5">
                 <h1>Feed</h1>
             </div>
         </div>
-
-        <div class="row d-flex justify-content-center">           
-            <div class="col-md-4" >
-                <div class="mt-5 mb-5">
-                    <app-perfil-lateral></app-perfil-lateral>
-                </div>
-                <div class="sticker  mt-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-4">
+                <div class="sticker mt-5">
                     <div class="list-group border border-dark">
                         <a class="list-group-item list-group-item-action border-0 border-bottom font-weight-bold"
                             (click)="goToTop()">Início/Voltar</a>
                         <hr class="m-0 border-dark">
                         <ul class="list-group p-0" *ngFor='let item of listaTema'>
                             <li class="list-group-item mr-0 ml-0 pl-0 pr-0 pb-0 pt-0">
-                                <div class="btn-group-toggle" data-toggle="buttons">
-                                    <button type="button" class="btn btn-info w-100 text-left" value={{item.nome}}
-                                        (click)='findByNomeTema($event)'>{{item.nome}}</button>
-                                </div>
+                                <button type="button" class="btn btn-info w-100 text-left" value={{item.nome}}
+                                    (click)='findByNomeTema($event)'>{{item.nome}}</button>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-md-8">
-                <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="postagens-temas" role="tabpanel"
-                        aria-labelledby="nav-postagens-tab">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card mt-5 mb-5"
-                                    *ngFor="let item of listaTemaSelected | orderBy : key : reverse">
-                                    <div *ngFor='let post of item.postagem'>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div *ngIf='verificaInicioSelected()'>
+                            <div *ngFor='let item of listaPostagens | orderBy : key : reverse'>
+                                <div class="card mt-5 mb-5 shadow">
+                                    <div class="card-header">
+                                        <div class="row mb-2 d-flex align-items-center">
+                                            <div class="col-md-12 d-flex align-items-center">
+                                                <div>
+                                                    <img class="rounded-circle" src="{{item.usuario.foto}}"
+                                                        alt="foto do dono da postagem" style="width: 40px;">
+                                                </div>
+                                                <div class="ml-3">
+                                                    <p class="mt-auto mb-auto"
+                                                        style="font-size: 20px; text-transform: capitalize;">
+                                                        {{item.usuario.nome}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-md-12">
+                                                <h5 class="card-title"> {{item.titulo}} </h5>
+                                                <small>Tema: {{item.tema.nome}} </small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-body">
+
+                                        <p class="card-text" aria-describedby="texto"> {{item.textoPostagem}} </p>
+                                        <small id="texto" class="form-text m-0 text-muted mb-3">
+                                            Postado em {{item.date | date: 'dd/MM/yyyy'}} às
+                                            {{item.date | date:'HH:mm'}}</small>
+                                    </div>
+                                    <div>
+                                        <app-post-comentario [post]="item"></app-post-comentario>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="verificaTemaSelected()">
+                            <div *ngFor="let item of listaTemaSelected | orderBy : key : reverse">
+                                <div *ngFor='let post of item.postagem | orderBy : key : reverse'>
+                                    <div class="card mt-5 mb-5 shadow">
                                         <div class="card-header">
                                             <div class="row mb-2 d-flex align-items-center">
                                                 <div class="col-md-12 d-flex align-items-center">
                                                     <div>
-                                                        <img class="rounded-circle" src="{{post.usuario ? post.usuario.foto : 'fallback-image-url'}}" alt="foto do dono da postagem" style="width: 40px;">
+                                                        <img class="rounded-circle" src="{{post.usuario.foto}}"
+                                                            alt="foto do dono da postagem" style="width: 40px;">
                                                     </div>
                                                     <div class="ml-3">
                                                         <p class="mt-auto mb-auto"
@@ -52,18 +84,20 @@
                                                 </div>
                                             </div>
                                             <div class="row d-flex align-items-center">
-                                                <div class="col-md-8">
-                                                    <h5 class="card-title">{{post.titulo}}</h5>
-                                                    <small>Tema: {{item.nome}}</small>
+                                                <div class="col-md-12">
+                                                    <h5 class="card-title"> {{post.titulo}} </h5>
+                                                    <small>Tema: {{item.nome}} </small>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="card-body">
-                                            <p class="card-text" aria-describedby="texto">{{post.textoPostagem}}</p>
+
+                                            <p class="card-text" aria-describedby="texto"> {{post.textoPostagem}} </p>
                                             <small id="texto" class="form-text m-0 text-muted mb-3">
-                                                Postado em {{post.date | date: 'dd/MM/yyyy'}} às {{post.date |
-                                                date:'HH:mm'}}
+
+                                                Postado em {{post.date | date: 'dd/MM/yyyy'}} às
+                                                {{post.date | date:'HH:mm'}}
                                             </small>
                                         </div>
                                         <div>
