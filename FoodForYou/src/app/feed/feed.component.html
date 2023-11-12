@@ -4,11 +4,14 @@
         style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
         <div class="row d-flex justify-content-center">
             <div class="mt-5">
-                <h1>Feed</h1>
+                <h1 style="color: rgb(255, 255, 255);">Feed</h1>
             </div>
         </div>
-        <div class="row d-flex justify-content-center">
+        <div class="row d-flex justify-content-center">            
             <div class="col-md-4">
+                <div>
+                    <app-perfil-lateral></app-perfil-lateral>
+                </div>
                 <div class="sticker mt-5">
                     <div class="list-group border border-dark">
                         <a class="list-group-item list-group-item-action border-0 border-bottom font-weight-bold"
@@ -16,7 +19,7 @@
                         <hr class="m-0 border-dark">
                         <ul class="list-group p-0" *ngFor='let item of listaTema'>
                             <li class="list-group-item mr-0 ml-0 pl-0 pr-0 pb-0 pt-0">
-                                <button type="button" class="btn btn-info w-100 text-left" value={{item.nome}}
+                                <button type="button" class="btn btn-success w-100 text-left" value={{item.nome}}
                                     (click)='findByNomeTema($event)'>{{item.nome}}</button>
                             </li>
                         </ul>

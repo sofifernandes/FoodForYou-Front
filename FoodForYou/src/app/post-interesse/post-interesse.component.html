@@ -43,8 +43,8 @@
                 <th scope="row">{{item.id}}</th>
                 <td>{{item.nome}}</td>
                 <td class="d-flex justify-content-end">
-                  <a class="btn btn-outline-info mr-3" [routerLink]="['/editar-interesse', item.id]">Editar</a>
-                  <a class="btn btn-outline-danger" [routerLink]="['/delete-interesse', item.id]">Apagar</a>
+                  <a class="btn btn-success mr-3" [routerLink]="['/editar-interesse', item.id]">Editar</a>
+                  <a class="btn btn-danger" [routerLink]="['/delete-interesse', item.id]">Apagar</a>
                 </td>
   
               </tr>
@@ -52,8 +52,9 @@
             </tbody>
           </table>
   
-          <button class="btn btn-outline-primary" (click)="generatePDF()">Exportar lista de interesses</button>
-  
+          <button class="btn btn-success" style="color: rgb(255, 255, 255);" (click)="generatePDF()">Exportar lista de interesses</button>
+          <p></p>
+          
         </div>
       </div>
     </div>  

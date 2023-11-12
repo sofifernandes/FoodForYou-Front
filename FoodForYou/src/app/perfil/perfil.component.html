@@ -11,7 +11,7 @@
 
       <div class="col-md-8">
 
-        <h3 class="text-center mb-4">
+        <h3 class="text-center mb-4" style="color: rgb(255, 255, 255);">
           {{frasePostagem}}
         </h3>
         <div class="shadow p-3 mb-5 bg-white rounded">
@@ -51,8 +51,9 @@
                 </select>
               </div>
             </div>
-
-            <div class="col-md-6 d-flex justify-content-end mr-0.75">
+            <p></p>
+            <div class="col-md-6 m-0 ml-3">
+              <p></p>
               <button type="button" class="btn btn-outline-info w-25" (click)='publicar()'>Publicar</button>
             </div>
           </div>
@@ -65,10 +66,10 @@
         <nav class="d-flex justify-content-center">
           <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active text-black font-weight-bold" id="nav-home-tab" data-toggle="tab"
-              href="#minhas-postagens" role="tab" aria-controls="nav-home" aria-selected="true">Minhas Postagens</a>
+              href="#minhas-postagens" role="tab" aria-controls="nav-home" aria-selected="true" style="color: rgb(161, 49, 5)">Minhas Postagens</a>
 
             <a class="nav-item nav-link text-black font-weight-bold" id="nav-profile-tab" data-toggle="tab"
-              href="#postagens-temas" role="tab" aria-controls="nav-profile" aria-selected="false">Postagens por
+              href="#postagens-temas" role="tab" aria-controls="nav-profile" aria-selected="false" style="color: rgb(161, 49, 5);">Postagens por
               Tema</a>
           </div>
         </nav>
@@ -85,7 +86,7 @@
                   [(ngModel)]='titulo'>
               </div>
               <div class="col-md-2 pl-0">
-                <button class="btn btn-outline-info w-100" type="button"
+                <button class="btn btn-success w-100" type="button"
                   (click)='findByTituloPostagem()'>Pesquisar</button>
               </div>
             </div>
@@ -145,7 +146,7 @@
                   aria-label="Pesquisar" [(ngModel)]='nomeTema'>
               </div>
               <div class="col-md-2 pl-0">
-                <button class="btn btn-outline-warning w-100" type="button"
+                <button class="btn btn-outline-sucess w-100" type="button"
                   (click)='findByNomeTema()'>Pesquisar</button>
               </div>
             </div>
@@ -178,8 +179,9 @@
           </div>
         </div>
 
-        <button class="btn btn-outline-primary" (click)="generatePDF()">Exportar lista de postagens</button>
-
+        <button class="btn btn-success" style="color: rgb(255, 255, 255);" (click)="generatePDF()">Exportar lista de postagens</button>
+        <p></p>
+        
       </div>
     </div>
   </div>

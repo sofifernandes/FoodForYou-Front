@@ -1,7 +1,6 @@
 import { UserLogin } from './../model/UserLogin';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { OAuthService } from 'angular-oauth2-oidc';
 import { User } from '../model/User';
 import { environment } from 'src/environments/environment.prod';
 import { environmentGoogle } from 'src/environments/environment.prod-google';

@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { OAuthModule, OAuthService } from 'angular-oauth2-oidc';
 import { DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -71,10 +70,9 @@ import { EditarCadastroComponent } from './editar-cadastro/editar-cadastro.compo
     HttpClientModule,
     FormsModule,
     OrderModule,
-    ModalModule.forRoot(),
-    OAuthModule.forRoot()
+    ModalModule.forRoot()
   ],
-  providers: [OAuthService, DatePipe],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
