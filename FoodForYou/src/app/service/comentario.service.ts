@@ -33,8 +33,8 @@ export class ComentarioService {
     return this.http.post("http://localhost:8080/comentario", comentario, this.token);
   }
   
-  putComentario(comentario: Comentario) {
-    return this.http.put("http://localhost:8080/comentario", comentario, this.token);
+  putComentario(id: number, comentario: Comentario) {
+    return this.http.put(`http://localhost:8080/comentario/${id}`, comentario, this.token);
   }
 
   deleteComentario(id: number) {

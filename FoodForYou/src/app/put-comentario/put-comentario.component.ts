@@ -14,8 +14,6 @@ export class PutComentarioComponent implements OnInit {
 
   comentario: Comentario = new Comentario()
 
-  comentarioResponse: ComentarioResponse = new ComentarioResponse()
-
   constructor(
     private comentarioService: ComentarioService,
     private router: Router,
@@ -30,18 +28,20 @@ export class PutComentarioComponent implements OnInit {
   }
 
   findByIdComentario(id: number) {
-    this.comentarioService.getByIdComentario(id).subscribe((resp: ComentarioResponse) => {
+    this.comentarioService.getByIdComentario(id).subscribe((resp: Comentario) => {
       console.log('response findByIdComentario():', resp);
-      this.comentarioResponse = resp
+      this.comentario = resp
     })
   }
 
   salvar() {
-      this.comentarioService.putComentario(this.comentario).subscribe((resp: ComentarioResponse) => {
-        this.comentarioResponse = resp
+      let id = this.route.snapshot.params['id']
+      console.log('id: ', id)
+      this.comentarioService.putComentario(id ,this.comentario).subscribe((resp: Comentario) => {
+        this.comentario = resp
         this.router.navigate(['/feed'])      
         this.alert.showAlertSuccess('Comentário atualizado com sucesso!')     
-        this.findByIdComentario(this.comentarioResponse.id)  
+        this.findByIdComentario(id)
       })    
   }  
 

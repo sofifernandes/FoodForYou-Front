@@ -58,7 +58,7 @@ export class PutPostagemComponent implements OnInit {
     this.postagem.tema = this.tema
     this.postagem.interesse = this.interesse
 
-    this.postagemService.putPostagem(this.postagem).subscribe((resp: Postagem) => {
+    this.postagemService.putPostagem(this.postagem.id, this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
       this.router.navigate(['/perfil'])
       this.alert.showAlertSuccess ('Postagem alterada com sucesso')
