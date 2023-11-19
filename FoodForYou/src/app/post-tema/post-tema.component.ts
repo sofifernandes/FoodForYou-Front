@@ -6,6 +6,8 @@ import { TemaService } from '../service/tema.service';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import Chart from 'chart.js/auto';
 
 
 @Component({
@@ -17,8 +19,9 @@ export class PostTemaComponent implements OnInit {
 
   tema: Tema = new Tema()
   listaTemas: Tema[]
+  @ViewChild('myChart') myChartCanvas!: ElementRef;
  
-
+ 
   constructor(
     private temaService: TemaService,
     private router: Router,
@@ -26,12 +29,12 @@ export class PostTemaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.findAllTemas()
+    this.findAllTemas();
   }
 
   findAllTemas(){
     this.temaService.getAllTemas().subscribe((resp: Tema[]) => {
-      this.listaTemas = resp
+      this.listaTemas = resp;
     })
   }
 
@@ -81,6 +84,34 @@ export class PostTemaComponent implements OnInit {
   
     pdfMake.createPdf(documentDefinition).download('theme-list.pdf');
   }
-  
 
+  ngAfterViewInit() {
+    // Fetch data from your service
+    this.temaService.getAllTemas().subscribe((temas: Tema[]) => {
+      const labels = temas.map((tema) => tema.nome);
+      const data = temas.map((tema) => tema.qnt_posts || 0);
+
+      // Access the canvas element
+      const canvas: HTMLCanvasElement = this.myChartCanvas.nativeElement;
+
+      // Create a chart
+      const ctx = canvas.getContext('2d');
+      const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Number of Posts',
+              data: data,
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1,
+            },
+          ],
+        },
+      });
+    });
+  } 
+  
 }

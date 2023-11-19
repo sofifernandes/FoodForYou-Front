@@ -4,7 +4,9 @@ import { DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { OrderModule } from 'ngx-order-pipe';
-import { ModalModule } from 'ngx-bootstrap/modal'
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { NgChartsModule  } from 'ng2-charts';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -69,8 +71,9 @@ import { EditarCadastroComponent } from './editar-cadastro/editar-cadastro.compo
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
+    NgChartsModule ,
     OrderModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot()    
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
