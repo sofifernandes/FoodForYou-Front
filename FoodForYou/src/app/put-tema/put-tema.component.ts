@@ -39,7 +39,7 @@ export class PutTemaComponent implements OnInit {
     } else if (this.tema.descricao == null || this.tema.descricao == ''){
       this.alert.showAlertDanger('A descrição não pode ficar vazia!')
     } else {
-      this.temaService.putTemas(this.tema).subscribe((resp: Tema) => {
+      this.temaService.putTemas(this.tema.id, this.tema).subscribe((resp: Tema) => {
         this.tema = resp
         this.router.navigate(['/cadastro-tema'])
         this.alert.showAlertSuccess('Tema atualizado com sucesso!')

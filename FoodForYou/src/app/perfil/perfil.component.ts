@@ -77,9 +77,9 @@ export class PerfilComponent implements OnInit {
     this.findAllUserPostagens()    
   }
 
-
   publicar() {
     this.tema.id= this.idTema
+    this.tema.qnt_posts = this.tema.qnt_posts + 1
     this.interesse.id= this.idInteresse
     this.postagem.interesse = this.interesse 
     this.postagem.tema = this.tema 
@@ -98,9 +98,13 @@ export class PerfilComponent implements OnInit {
         this.alert.showAlertSuccess('Postagem realizada com sucesso!')
         this.findAllUserPostagens() 
       })
+      this.temaService.putTemas(this.tema.id, this.tema).subscribe(() => {
+        this.tema.qnt_posts++;
+      })
     }
-  }
+  }  
 
+    
   findAllInteresse() {
     this.interesseService.getAllInteresse().subscribe((resp: Interesse[]) => {
       this.listaInteresse = resp
