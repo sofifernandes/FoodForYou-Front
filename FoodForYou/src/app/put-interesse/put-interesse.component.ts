@@ -37,7 +37,7 @@ export class PutInteresseComponent implements OnInit {
       this.alert.showAlertDanger('Esse interesse não pode ser modificado, pois já pertence a uma postagem.')
       this.router.navigate(['/cadastro-interesse'])
     }else {
-      this.interesseService.putInteresse(this.interesse).subscribe((resp: Interesse) => {
+      this.interesseService.putInteresse(this.interesse.id, this.interesse).subscribe((resp: Interesse) => {
         this.interesse = resp
         this.router.navigate(['/cadastro-interesse'])
         this.alert.showAlertSuccess('Interesse atualizado com sucesso!')

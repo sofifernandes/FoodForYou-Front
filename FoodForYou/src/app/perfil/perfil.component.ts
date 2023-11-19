@@ -98,6 +98,9 @@ export class PerfilComponent implements OnInit {
         this.alert.showAlertSuccess('Postagem realizada com sucesso!')
         this.findAllUserPostagens() 
       })
+      this.temaService.putTemas(this.tema.id, this.tema).subscribe((resp: Tema) => {
+        this.tema.qnt_posts++;
+      })
     }
   }
 
