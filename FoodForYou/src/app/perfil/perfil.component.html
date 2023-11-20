@@ -93,7 +93,7 @@
 
             <div class="row">
               <div class="col-md-12">
-                <div *ngFor="let item of listaPostagens | orderBy : key : reverse">
+                <div *ngFor="let item of listaPostagens">
                   <div class="card mt-5 mb-5 shadow p-3 bg-white rounded">
                     <div class="card-header">
                       <div class="row mb-2 d-flex align-items-center">
@@ -152,7 +152,7 @@
             </div>
 
             <div class="row">
-              <div class="col-md-12" *ngFor="let item of listaTema | orderBy : key : reverse">
+              <div class="col-md-12" *ngFor="let item of listaTema">
                 <div *ngFor='let post of item.postagem'>
 
                   <div class="card mt-5 mb-5 shadow p-3 bg-white rounded">

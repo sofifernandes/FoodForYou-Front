@@ -6,22 +6,7 @@
     <div class="row">
       <div class="col-md-4">
         <app-perfil-lateral></app-perfil-lateral>
-      </div>
-      <div class="col-md-8">
-        <ngx-charts-bar-vertical
-          [view]="view"
-          [scheme]="colorScheme"
-          [results]="dadosDoTema"
-          [gradient]="gradient"
-          [xAxis]="showXAxis"
-          [yAxis]="showYAxis"
-          [legend]="showLegend"
-          [showXAxisLabel]="showXAxisLabel"
-          [showYAxisLabel]="showYAxisLabel"
-          [xAxisLabel]="xAxisLabel"
-          [yAxisLabel]="yAxisLabel"
-        ></ngx-charts-bar-vertical>
-      </div>
+      </div>      
       <div class="col-md-8">
         <h3 class="text-center mb-4 text-monospace mt-5" style="color: rgb(255, 255, 255)">Cadastro de um novo tema</h3>
 
@@ -76,15 +61,35 @@
         
         <button class="btn btn-success" style="color: rgb(255, 255, 255);" (click)="generatePDF()">Exportar lista de temas</button>
         <p></p>
-        
+
+        <p></p>
+        <div class="row mt-5">
+          <div class="col-md-12">
+            <h4 class="text-center text-monospace" style="color: rgb(255, 255, 255)">Gráfico de engajamento:</h4>
+          </div>          
+        </div>
+        <p></p>
+
+        <div class="col-md-12" style="background-color: #fcfcfc;">
+          <p></p>
+          <p></p>
+          <ngx-charts-bar-vertical
+            [view]="view"
+            [scheme]="colorScheme"
+            [results]="dadosDoTema"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+          ></ngx-charts-bar-vertical>
+        </div>
+        <p></p>
+
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
 </div>

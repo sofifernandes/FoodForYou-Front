@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { OrderModule } from 'ngx-order-pipe';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 
@@ -71,7 +70,6 @@ import { EditarCadastroComponent } from './editar-cadastro/editar-cadastro.compo
     HttpClientModule,
     FormsModule,
     NgxChartsModule,
-    OrderModule,
     ModalModule.forRoot()    
   ],
   providers: [DatePipe],
