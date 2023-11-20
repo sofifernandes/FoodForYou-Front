@@ -92,19 +92,19 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "FoodForYou:build",
+            "buildTarget": "FoodForYou:build",
             "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
-              "browserTarget": "FoodForYou:build:production"
+              "buildTarget": "FoodForYou:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "FoodForYou:build"
+            "buildTarget": "FoodForYou:build"
           }
         },
         "test": {
@@ -150,8 +150,7 @@
           }
         }
       }
-    }},
-  "defaultProject": "FoodForYou"
+    }}
 }
 
 
