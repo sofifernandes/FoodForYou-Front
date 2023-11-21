@@ -8,7 +8,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
+    "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
+    "schema:drop": "ts-node ./node_modules/typeorm/cli.js schema:drop",
+    "schema:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync"
   },
   "private": true,
   "dependencies": {
@@ -42,12 +46,14 @@
     "popper.js": "^1.16.1",
     "rxjs": "~7.8.1",
     "tslib": "^2.6.2",
+    "typeorm-seeding": "^1.6.1",
     "zone.js": "^0.14.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~17.0.1",
     "@angular/cli": "~17.0.1",
     "@angular/compiler-cli": "~17.0.3",
+    "@types/faker": "^6.6.9",
     "@types/jasmine": "~5.1.2",
     "@types/jasminewd2": "~2.0.13",
     "@types/node": "^20.9.2",
