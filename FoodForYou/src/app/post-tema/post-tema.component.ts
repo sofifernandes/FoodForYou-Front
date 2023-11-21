@@ -29,7 +29,7 @@ export class PostTemaComponent implements OnInit {
   showXAxisLabel = true;
   xAxisLabel = 'Nomes dos Temas';
   showYAxisLabel = true;
-  yAxisLabel = 'Quantidade de Posts';
+  yAxisLabel = 'Quantidade de Postagens';
  
   constructor(
     private temaService: TemaService,
