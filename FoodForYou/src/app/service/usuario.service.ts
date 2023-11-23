@@ -18,15 +18,15 @@ export class UsuarioService {
   }
 
   getByNomeUser(nome: string) {
-    return this.http.get(`http://localhost:8080/usuario/nome/${nome}`, this.token)
+    return this.http.get(`physical-sponge-production.up.railway.app/usuario/nome/${nome}`, this.token)
   } 
 
   getByIdUser(id: number){
-      return this.http.get(`http://localhost:8080/usuario/${id}`, this.token)
+      return this.http.get(`physical-sponge-production.up.railway.app/usuario/${id}`, this.token)
   }
 
   putUsuario(usuario: User) {
-    return this.http.put('http://localhost:8080/usuario', usuario, this.token)
+    return this.http.put('physical-sponge-production.up.railway.app/usuario', usuario, this.token)
   }
  
 }

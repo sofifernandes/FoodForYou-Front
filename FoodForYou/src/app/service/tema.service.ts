@@ -15,27 +15,27 @@ export class TemaService {
   }
 
   getAllTemas() {
-    return this.http.get("http://localhost:8080/tema", this.token)
+    return this.http.get("physical-sponge-production.up.railway.app/tema", this.token)
   }
 
   getByIdTema(id: number) {
-    return this.http.get(`http://localhost:8080/tema/${id}`, this.token)
+    return this.http.get(`physical-sponge-production.up.railway.app/tema/${id}`, this.token)
   }
 
   getByNomeTema(nome: string) {
-    return this.http.get(`http://localhost:8080/tema/nome/${nome}`, this.token)
+    return this.http.get(`physical-sponge-production.up.railway.app/tema/nome/${nome}`, this.token)
   }
 
   postTemas(tema: Tema) {
-    return this.http.post("http://localhost:8080/tema", tema, this.token)
+    return this.http.post("physical-sponge-production.up.railway.app/tema", tema, this.token)
   }
 
   putTemas(id: number, tema: Tema) {
-    return this.http.put(`http://localhost:8080/tema/${id}`, tema, this.token)
+    return this.http.put(`physical-sponge-production.up.railway.app/tema/${id}`, tema, this.token)
   }
 
   deleteTema(id: number) {
-    return this.http.delete(`http://localhost:8080/tema/${id}`, this.token)
+    return this.http.delete(`physical-sponge-production.up.railway.app/tema/${id}`, this.token)
   }
   
 }

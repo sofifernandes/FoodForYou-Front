@@ -15,27 +15,27 @@ export class InteresseService {
   }
 
   getAllInteresse() {
-    return this.http.get("http://localhost:8080/interesse", this.token)
+    return this.http.get("physical-sponge-production.up.railway.app/interesse", this.token)
   }
 
   getByIdInteresse(id: number) {
-    return this.http.get(`http://localhost:8080/interesse/${id}`, this.token)
+    return this.http.get(`physical-sponge-production.up.railway.app/interesse/${id}`, this.token)
   }
 
   getByNomeInteresse(nome: string) {
-    return this.http.get(`http://localhost:8080/interesse/nome/${nome}`, this.token)
+    return this.http.get(`physical-sponge-production.up.railway.app/interesse/nome/${nome}`, this.token)
   }
 
   postInteresse (interesse: Interesse) {
-    return this.http.post("http://localhost:8080/interesse", interesse, this.token)
+    return this.http.post("physical-sponge-production.up.railway.app/interesse", interesse, this.token)
   }
 
   putInteresse(id: number, interesse: Interesse) {
-    return this.http.put(`http://localhost:8080/interesse/${id}`, interesse, this.token);
+    return this.http.put(`physical-sponge-production.up.railway.app/interesse/${id}`, interesse, this.token);
   }
 
   deleteInteresse(id: number) {
-    return this.http.delete(`http://localhost:8080/interesse/${id}`, this.token)
+    return this.http.delete(`physical-sponge-production.up.railway.app/interesse/${id}`, this.token)
   }
   
 }

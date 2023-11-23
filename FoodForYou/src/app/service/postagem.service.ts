@@ -15,27 +15,27 @@ export class PostagemService {
   }
 
   getAllPostagens() {
-    return this.http.get("http://localhost:8080/postagem", this.token)
+    return this.http.get("physical-sponge-production.up.railway.app/postagem", this.token)
   }
 
   getByIdPostagem(id: number) {
-    return this.http.get(`http://localhost:8080/postagem/${id}`, this.token)
+    return this.http.get(`physical-sponge-production.up.railway.app/postagem/${id}`, this.token)
   }
 
   postPostagem(postagem: Postagem) {
-    return this.http.post("http://localhost:8080/postagem", postagem, this.token)
+    return this.http.post("physical-sponge-production.up.railway.app/postagem", postagem, this.token)
   }
 
   putPostagem(id: number, postagem: Postagem) {
-    return this.http.put(`http://localhost:8080/postagem/${id}`, postagem, this.token);
+    return this.http.put(`physical-sponge-production.up.railway.app/postagem/${id}`, postagem, this.token);
   }  
 
   deletePostagem(id: number) {
-    return this.http.delete(`http://localhost:8080/postagem/${id}`, this.token)
+    return this.http.delete(`physical-sponge-production.up.railway.app/postagem/${id}`, this.token)
 
   }
 
   getByTituloPostagem(titulo: string) {
-    return this.http.get(`http://localhost:8080/postagem/titulo/${titulo}`, this.token)
+    return this.http.get(`physical-sponge-production.up.railway.app/postagem/titulo/${titulo}`, this.token)
   }
 }
