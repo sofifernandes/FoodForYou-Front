@@ -16,11 +16,11 @@ export class AuthService {
   tokne_url = environmentGoogle.token_url;
 
   logar(userLogin: UserLogin) {
-    return this.http.post('physical-sponge-production.up.railway.app/usuario/logar', userLogin)
+    return this.http.post('physical-sponge-production.up.railway.app/logar', userLogin)
   }
 
   cadastrar(user: User) {
-    return this.http.post('physical-sponge-production.up.railway.app/usuario/cadastrar', user)
+    return this.http.post('physical-sponge-production.up.railway.app/cadastrar', user)
   }
 
   btnSair() {
