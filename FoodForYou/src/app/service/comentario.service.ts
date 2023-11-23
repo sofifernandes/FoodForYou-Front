@@ -18,27 +18,27 @@ export class ComentarioService {
   }
 
   getAllComentarios() {
-    return this.http.get("physical-sponge-production.up.railway.app/comentario", this.token)
+    return this.http.get("https://foodforyou-sf.netlify.app/physical-sponge-production.up.railway.app/comentario", this.token)
   }
 
   getByIdComentario(id: number) {
-    return this.http.get(`physical-sponge-production.up.railway.app/comentario/${id}`, this.token)
+    return this.http.get(`https://foodforyou-sf.netlify.app/physical-sponge-production.up.railway.app/comentario/${id}`, this.token)
   }
 
   getComentariosByPost(postId: number) { 
-    return this.http.get(`physical-sponge-production.up.railway.app/comentario/post/${postId}`, this.token);
+    return this.http.get(`https://foodforyou-sf.netlify.app/physical-sponge-production.up.railway.app/comentario/post/${postId}`, this.token);
   }
  
   postComentario(comentario: Comentario) {
-    return this.http.post("physical-sponge-production.up.railway.app/comentario", comentario, this.token);
+    return this.http.post("https://foodforyou-sf.netlify.app/physical-sponge-production.up.railway.app/comentario", comentario, this.token);
   }
   
   putComentario(id: number, comentario: Comentario) {
-    return this.http.put(`physical-sponge-production.up.railway.app/comentario/${id}`, comentario, this.token);
+    return this.http.put(`https://foodforyou-sf.netlify.app/physical-sponge-production.up.railway.app/comentario/${id}`, comentario, this.token);
   }
 
   deleteComentario(id: number) {
-    return this.http.delete(`physical-sponge-production.up.railway.app/comentario/${id}`, this.token);
+    return this.http.delete(`https://foodforyou-sf.netlify.app/physical-sponge-production.up.railway.app/comentario/${id}`, this.token);
   }
 
 }
