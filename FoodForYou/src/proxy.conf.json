@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "https://foodforyou-sf.netlify.app/physical-sponge-production.up.railway.app",
+    "target": "https://physical-sponge-production.up.railway.app",
     "secure": false,
     "logLevel": "debug",
     "pathRewrite": { "^/api": "" }

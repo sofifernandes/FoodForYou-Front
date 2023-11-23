@@ -15,27 +15,27 @@ export class InteresseService {
   }
 
   getAllInteresse() {
-    return this.http.get("https://foodforyou-sf.netlify.app/physical-sponge-production.up.railway.app/interesse", this.token)
+    return this.http.get("https://physical-sponge-production.up.railway.app/interesse", this.token)
   }
 
   getByIdInteresse(id: number) {
-    return this.http.get(`https://foodforyou-sf.netlify.app/physical-sponge-production.up.railway.app/interesse/${id}`, this.token)
+    return this.http.get(`https://physical-sponge-production.up.railway.app/interesse/${id}`, this.token)
   }
 
   getByNomeInteresse(nome: string) {
-    return this.http.get(`https://foodforyou-sf.netlify.app/physical-sponge-production.up.railway.app/interesse/nome/${nome}`, this.token)
+    return this.http.get(`https://physical-sponge-production.up.railway.app/interesse/nome/${nome}`, this.token)
   }
 
   postInteresse (interesse: Interesse) {
-    return this.http.post("https://foodforyou-sf.netlify.app/physical-sponge-production.up.railway.app/interesse", interesse, this.token)
+    return this.http.post("https://physical-sponge-production.up.railway.app/interesse", interesse, this.token)
   }
 
   putInteresse(id: number, interesse: Interesse) {
-    return this.http.put(`https://foodforyou-sf.netlify.app/physical-sponge-production.up.railway.app/interesse/${id}`, interesse, this.token);
+    return this.http.put(`https://physical-sponge-production.up.railway.app/interesse/${id}`, interesse, this.token);
   }
 
   deleteInteresse(id: number) {
-    return this.http.delete(`https://foodforyou-sf.netlify.app/physical-sponge-production.up.railway.app/interesse/${id}`, this.token)
+    return this.http.delete(`https://physical-sponge-production.up.railway.app/interesse/${id}`, this.token)
   }
   
 }

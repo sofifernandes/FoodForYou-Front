@@ -15,27 +15,27 @@ export class TemaService {
   }
 
   getAllTemas() {
-    return this.http.get("https://foodforyou-sf.netlify.app/physical-sponge-production.up.railway.app/tema", this.token)
+    return this.http.get("https://physical-sponge-production.up.railway.app/tema", this.token)
   }
 
   getByIdTema(id: number) {
-    return this.http.get(`https://foodforyou-sf.netlify.app/physical-sponge-production.up.railway.app/tema/${id}`, this.token)
+    return this.http.get(`https://physical-sponge-production.up.railway.app/tema/${id}`, this.token)
   }
 
   getByNomeTema(nome: string) {
-    return this.http.get(`https://foodforyou-sf.netlify.app/physical-sponge-production.up.railway.app/tema/nome/${nome}`, this.token)
+    return this.http.get(`https://physical-sponge-production.up.railway.app/tema/nome/${nome}`, this.token)
   }
 
   postTemas(tema: Tema) {
-    return this.http.post("https://foodforyou-sf.netlify.app/physical-sponge-production.up.railway.app/tema", tema, this.token)
+    return this.http.post("https://physical-sponge-production.up.railway.app/tema", tema, this.token)
   }
 
   putTemas(id: number, tema: Tema) {
-    return this.http.put(`https://foodforyou-sf.netlify.app/physical-sponge-production.up.railway.app/tema/${id}`, tema, this.token)
+    return this.http.put(`https://physical-sponge-production.up.railway.app/tema/${id}`, tema, this.token)
   }
 
   deleteTema(id: number) {
-    return this.http.delete(`https://foodforyou-sf.netlify.app/physical-sponge-production.up.railway.app/tema/${id}`, this.token)
+    return this.http.delete(`https://physical-sponge-production.up.railway.app/tema/${id}`, this.token)
   }
   
 }
