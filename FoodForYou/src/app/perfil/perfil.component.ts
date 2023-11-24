@@ -42,7 +42,7 @@ export class PerfilComponent implements OnInit {
 
   idInteresse: number
   idTema: number
-  idUser: number
+  idUser: number  
 
   nomeUser: string
   fotoUser: string
@@ -59,7 +59,7 @@ export class PerfilComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    window.scroll(0, 0)
+    window.scroll(0, 0)    
 
     let token = environment.token
 
@@ -77,9 +77,10 @@ export class PerfilComponent implements OnInit {
     this.findAllUserPostagens()    
   }
 
+  
+
   publicar() {
     this.tema.id= this.idTema
-    this.tema.qnt_posts = this.tema.qnt_posts + 1
     this.interesse.id= this.idInteresse
     this.postagem.interesse = this.interesse 
     this.postagem.tema = this.tema 
@@ -97,13 +98,13 @@ export class PerfilComponent implements OnInit {
         this.postagem = new Postagem()
         this.alert.showAlertSuccess('Postagem realizada com sucesso!')
         this.findAllUserPostagens() 
-      })
-      this.temaService.putTemas(this.tema.id, this.tema).subscribe(() => {
-        this.tema.qnt_posts++;
-      })
-    }
-  }  
-
+      })  
+      this.temaService.putTemas(this.tema.id, this.tema).subscribe((resp: Tema) => {
+        this.tema = resp
+        this.tema.qnt_posts++
+      })       
+    }   
+  }
     
   findAllInteresse() {
     this.interesseService.getAllInteresse().subscribe((resp: Interesse[]) => {
