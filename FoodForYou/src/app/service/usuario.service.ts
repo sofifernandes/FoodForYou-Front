@@ -28,5 +28,9 @@ export class UsuarioService {
   putUsuario(usuario: User) {
     return this.http.put('https://physical-sponge-production.up.railway.app/usuario', usuario, this.token)
   }
+
+  deleteUsuario(id: number) {
+    return this.http.delete(`https://physical-sponge-production.up.railway.app/usuario/${id}`, this.token)
+  }
  
 }

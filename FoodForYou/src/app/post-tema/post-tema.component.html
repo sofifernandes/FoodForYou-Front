@@ -4,20 +4,20 @@
   <div class="container">
 
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-4 mt-5">
         <app-perfil-lateral></app-perfil-lateral>
       </div>      
       <div class="col-md-8">
-        <h3 class="text-center mb-4 text-monospace mt-5" style="color: rgb(255, 255, 255)">Cadastro de um novo tema</h3>
+        <h3 class="text-center mb-4 text-monospace mt-5" style="color: rgb(255, 255, 255)"><b>Cadastro de um novo tema</b></h3>
 
         <div class="form-group">
-          <label class="text-monospace" for="texto" style="color: rgb(255, 255, 255)">Nome do tema:</label>
+          <label class="text-monospace" for="texto" style="color: rgb(255, 255, 255)"><b>Nome do tema:</b></label>
           <input class="form-control" id="texto" rows="3" placeholder="Digite aqui o seu novo tema"
             [(ngModel)]='tema.nome'>
         </div>
 
         <div class="form-group">
-          <label for="texto" style="color: rgb(255, 255, 255)">Descrição:</label>
+          <label for="texto" style="color: rgb(255, 255, 255)"><b>Descrição:</b></label>
           <textarea class="form-control" id="descricao" rows="3" placeholder="Digite aqui a descrição do tema"
             [(ngModel)]='tema.descricao'></textarea>
         </div>
@@ -32,7 +32,7 @@
 
         <div class="row mt-5">
           <div class="col-md-12">
-            <h4 class="text-center text-monospace" style="color: rgb(255, 255, 255)">Lista de temas</h4>
+            <h4 class="text-center text-monospace" style="color: rgb(255, 255, 255)"><b>Lista de temas</b></h4>
           </div>          
         </div>
 
@@ -46,8 +46,8 @@
           </thead>
           <tbody>
             <tr *ngFor='let item of listaTemas'>
-              <th scope="row">{{item.id}}</th>
-              <td>{{item.nome}}</td>
+              <th scope="row"><b>{{item.id}}</b></th>
+              <td><b>{{item.nome}}</b></td>
               <td class="d-flex justify-content-end">
                 <a class="btn btn-success mr-3" [routerLink]="['/editar-tema', item.id]">Editar</a>
                 <a class="btn btn-danger" [routerLink]="['/delete-tema', item.id]">Apagar</a>
@@ -65,7 +65,7 @@
         <p></p>
         <div class="row mt-5">
           <div class="col-md-12">
-            <h4 class="text-center text-monospace" style="color: rgb(255, 255, 255)">Gráfico de engajamento:</h4>
+            <h4 class="text-center text-monospace" style="color: rgb(255, 255, 255)"><b>Gráfico de engajamento:</b></h4>
           </div>          
         </div>
         <p></p>

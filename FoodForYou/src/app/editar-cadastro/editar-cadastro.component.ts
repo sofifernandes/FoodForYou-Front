@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { environment } from '../../environments/environment.prod';
 import { AlertasService } from '../service/alertas.service';
 import { PostagemService } from '../service/postagem.service';
-
 @Component({
   selector: 'app-editar-cadastro',
   templateUrl: './editar-cadastro.component.html',
@@ -56,6 +55,16 @@ export class EditarCadastroComponent implements OnInit {
 
     this.router.navigate(['/home'])
     this.alert.showAlertSuccess('Perfil alterado com sucesso!!')
+  }
+
+
+  deletar(){
+    this.usuarioService.deleteUsuario(this.user.id).subscribe(() => {
+      this.alert.showAlertSuccess('Usuário apagado com sucesso!')
+      this.router.navigate(["/login"])
+      environment.token = ''
+      environment.admin = false
+    })
   }
 
 }

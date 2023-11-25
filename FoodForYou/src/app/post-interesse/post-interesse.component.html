@@ -4,14 +4,14 @@
     <div class="container">
   
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 mt-5">
           <app-perfil-lateral></app-perfil-lateral>
         </div>
         <div class="col-md-8">
-          <h3 class="text-center mb-4 text-monospace mt-5" style="color: rgb(255, 255, 255)">Cadastro de um novo interesse</h3>
+          <h3 class="text-center mb-4 text-monospace mt-5" style="color: rgb(255, 255, 255)"><b>Cadastro de um novo interesse</b></h3>
   
           <div class="form-group">
-            <label class="text-monospace" for="texto" style="color: rgb(255, 255, 255)">Nome do interesse:</label>
+            <label class="text-monospace" for="texto" style="color: rgb(255, 255, 255)"><b>Nome do interesse:</b></label>
             <input class="form-control" id="texto" rows="3" placeholder="Digite aqui o seu novo interesse"
               [(ngModel)]='interesse.nome'>
           </div>
@@ -26,7 +26,7 @@
   
           <div class="row mt-5">
             <div class="col-md-12">
-              <h4 class="text-center text-monospace" style="color: rgb(255, 255, 255)">Lista de interesses</h4>
+              <h4 class="text-center text-monospace" style="color: rgb(255, 255, 255)"><b>Lista de interesses</b></h4>
             </div>
           </div>
   
@@ -40,8 +40,8 @@
             </thead>
             <tbody>
               <tr *ngFor='let item of listaInteresses'>
-                <th scope="row">{{item.id}}</th>
-                <td>{{item.nome}}</td>
+                <th scope="row"><b>{{item.id}}</b></th>
+                <td><b>{{item.nome}}</b></td>
                 <td class="d-flex justify-content-end">
                   <a class="btn btn-success mr-3" [routerLink]="['/editar-interesse', item.id]">Editar</a>
                   <a class="btn btn-danger" [routerLink]="['/delete-interesse', item.id]">Apagar</a>
