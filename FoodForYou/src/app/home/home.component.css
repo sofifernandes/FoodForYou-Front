@@ -1,6 +1,6 @@
 .parallax {
     background-image: url("https://thewaitingroom.karger.com/wp-content/uploads/Food_1800x1200.jpg");
-    min-height: 450px;
+    min-height: 250px;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -12,7 +12,7 @@
 }
 
 .corFundo{
-    background-color: #8ee47dc0;
+    background-color: rgba(142, 228, 125, 0.582);
 }
 
 .custom-font-size{
